@@ -1,19 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>GPU Heaven</title>
 </head>
+
 <body>
-    <div class="container">
-        <h1>My First Bootstrap Page</h1>
-        <p>This is some text.</p>
+    <div class="jumbotron">
+        <h1 class="display-1 text-center">GPU Heaven, nosotros si tenemos stock</h1>
     </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Logo</a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Inicio</a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    AMD
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" data-toggle="tab" href="#amd500">500 series</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#amd5000">5000 series</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#amd6000">6000 series</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    NVIDIA
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" data-toggle="tab" href="#nv1600">1600 series</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#nv2000">2000 series</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#nv3000">3000 series</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Usuario
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" data-toggle="tab" href="#">Ver informacion</a>
+                    <a class="dropdown-item" data-toggle="tab" href="#">Ver carrito</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="tab-content">
+            <div class="tab-pane container fade" id="amd500">AMD 500 series</div>
+            <div class="tab-pane container fade" id="amd5000">AMD 5000 series</div>
+            <div class="tab-pane container fade" id="amd6000">AMD 6000 series</div>
+            <div class="tab-pane container fade" id="nv1600">NVIDIA 1600 series</div>
+            <div class="tab-pane container fade" id="nv2000">NVIDIA 2000 series</div>
+            <div class="tab-pane container fade" id="nv3000">NVIDIA 3000 series</div>
+        </div>
+    </div>
+
 </body>
+
 </html>
