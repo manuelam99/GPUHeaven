@@ -36,22 +36,20 @@
     <div class="jumbotron">
         <h1 class="display-1 text-center">Los mejores precios, la mejor disponibilidad</h1>
     </div>
-    <nav class="navbar navbar-expand-sm sticky-top justify-content-center">
-        <!-- Links -->
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#">Todo</a>
-            </li>
+    <!-- Links -->
+    <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#">Todo</a>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#">AMD</a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#">AMD</a>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#">NVIDIA</a>
-            </li>
-        </ul>
-    </nav>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#">NVIDIA</a>
+        </li>
+    </ul>
 
 </body>
 
