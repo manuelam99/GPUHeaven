@@ -66,7 +66,7 @@ while ($row = mysqli_fetch_array($result)) {
     $cardsTodo .= '</div>';
 
     //$cardsTodo .= '<img class="card-img-top"'. 'src="../images/'. $dir.$fotos[0].'" ' .'alt="Card image">';
-    $cardsTodo .= '<div class="card-body">';
+    $cardsTodo .= '<div class="card-body" style="height: 50%">';
     $cardsTodo .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
     $cardsTodo .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
     $cardsTodo .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
