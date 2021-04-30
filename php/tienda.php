@@ -13,6 +13,32 @@
     <title>GPU Heaven</title>
 </head>
 
+<?php
+$con = mysqli_connect("localhost", "root", "root", "gpu_heaven");
+
+$cards = "";
+// Check connection
+if (mysqli_connect_errno()) {
+    $cards = "error";
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+
+$result = mysqli_query($con, "SELECT * FROM productos;");
+
+while ($row = mysqli_fetch_array($result)) {
+    $cards .= '<div class="card col-xs-12 card col-sm-6 col-md-6 col-lg-4 col-xl-4">';
+    $cards .= '<div class="card-body">';
+    $cards .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
+    $cards .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
+    $cards .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
+    $cards .= '<a href="#" class="btn btn-primary">Agregar a Carrito</a>';
+    $cards .= '</div>';
+    $cards .= '</div>';
+}
+
+mysqli_close($con);
+?>
+
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
@@ -39,17 +65,31 @@
     <!-- Links -->
     <ul class="nav nav-tabs justify-content-center">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#">Todo</a>
+            <a class="nav-link active" data-toggle="tab" href="#todo">Todo</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#">AMD</a>
+            <a class="nav-link" data-toggle="tab" href="#amd">AMD</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#">NVIDIA</a>
+            <a class="nav-link" data-toggle="tab" href="#nvidia">NVIDIA</a>
         </li>
     </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane container active" id="todo">
+            <div class="row justify-content-center">
+                <?php echo $cards; ?>
+            </div>
+        </div>
+        <div class="tab-pane container fade" id="amd">
+
+        </div>
+        <div class="tab-pane container fade" id="nvidia">
+
+        </div>
+    </div>
 
 </body>
 
