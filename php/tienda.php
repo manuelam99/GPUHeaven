@@ -10,13 +10,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/filtros.js"></script>
     <title>GPU Heaven</title>
 </head>
 
 <?php
 $con = mysqli_connect("localhost", "root", "root", "gpu_heaven");
 
-$cards = "";
+$cardsTodo = "";
+$cardsAMD = "";
+$cardsNVIDIA = "";
 // Check connection
 if (mysqli_connect_errno()) {
     $cards = "error";
@@ -26,14 +29,40 @@ if (mysqli_connect_errno()) {
 $result = mysqli_query($con, "SELECT * FROM productos;");
 
 while ($row = mysqli_fetch_array($result)) {
-    $cards .= '<div class="card col-xs-12 card col-sm-6 col-md-6 col-lg-4 col-xl-4">';
-    $cards .= '<div class="card-body">';
-    $cards .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
-    $cards .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
-    $cards .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
-    $cards .= '<a href="#" class="btn btn-primary">Agregar a Carrito</a>';
-    $cards .= '</div>';
-    $cards .= '</div>';
+
+    $dir = $row['fotos_producto'].'/';
+    $fotos = scandir('../images/'.$dir);
+
+    $cardsTodo .= '<div class="card">';
+    $cardsTodo .= '<img class="card-img-top"'. 'src="../images/'. $dir.$fotos[2].'" ' .'alt="Card image">';
+    $cardsTodo .= '<div class="card-body">';
+    $cardsTodo .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
+    $cardsTodo .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
+    $cardsTodo .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
+    $cardsTodo .= '<a href="#" class="btn btn-primary">Agregar a Carrito</a>';
+    $cardsTodo .= '</div>';
+    $cardsTodo .= '</div>';
+    if ($row['fab_producto'] == "NVIDIA") {
+        $cardsNVIDIA .= '<div class="card">';
+        $cardsNVIDIA .= '<img class="card-img-top" src="../images/" alt="Card image">';
+        $cardsNVIDIA .= '<div class="card-body">';
+        $cardsNVIDIA .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
+        $cardsNVIDIA .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
+        $cardsNVIDIA .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
+        $cardsNVIDIA .= '<a href="#" class="btn btn-primary">Agregar a Carrito</a>';
+        $cardsNVIDIA .= '</div>';
+        $cardsNVIDIA .= '</div>';
+    } elseif ($row['fab_producto'] == "AMD") {
+        $cardsAMD .= '<div class="card">';
+        $cardsAMD .= '<img class="card-img-top" src="../images/" alt="Card image">';
+        $cardsAMD .= '<div class="card-body">';
+        $cardsAMD .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
+        $cardsAMD .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
+        $cardsAMD .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
+        $cardsAMD .= '<a href="#" class="btn btn-primary">Agregar a Carrito</a>';
+        $cardsAMD .= '</div>';
+        $cardsAMD .= '</div>';
+    }
 }
 
 mysqli_close($con);
@@ -78,16 +107,20 @@ mysqli_close($con);
     </ul>
 
     <div class="tab-content">
-        <div class="tab-pane container active" id="todo">
-            <div class="row justify-content-center">
-                <?php echo $cards; ?>
+        <div class="tab-pane container active mt-4" id="todo">
+            <div class="card-columns">
+                <?php echo $cardsTodo; ?>
             </div>
         </div>
-        <div class="tab-pane container fade" id="amd">
-
+        <div class="tab-pane container fade mt-4" id="amd">
+            <div class="card-columns">
+                <?php echo $cardsAMD; ?>
+            </div>
         </div>
-        <div class="tab-pane container fade" id="nvidia">
-
+        <div class="tab-pane container fade mt-4" id="nvidia">
+            <div class="card-columns">
+                <?php echo $cardsNVIDIA; ?>
+            </div>
         </div>
     </div>
 
