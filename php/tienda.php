@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_array($result)) {
 
     $cardsTodo .= '<div class="card">';
 
-    $cardsTodo .= '<div id="demo' . $row['id_producto'] . '" class="carousel slide" data-interval="false" data-ride="carousel">';
+    $cardsTodo .= '<div id="demo' . $row['id_producto'].$iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
     $cardsTodo .= '<ul class="carousel-indicators">' .
         '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="0" class="active"</li>' .
         '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="1"</li>' .
