@@ -15,6 +15,7 @@
 </head>
 
 <?php
+
 $con = mysqli_connect("localhost", "root", "root", "gpu_heaven");
 
 $cardsTodo = "";
@@ -30,11 +31,41 @@ $result = mysqli_query($con, "SELECT * FROM productos;");
 
 while ($row = mysqli_fetch_array($result)) {
 
-    $dir = $row['fotos_producto'].'/';
-    $fotos = scandir('../images/'.$dir);
+    $iden = 'a';
+    $dir = $row['fotos_producto'] . '/';
+    $fotos = array_slice(scandir('../images/' . $dir), 2);
 
     $cardsTodo .= '<div class="card">';
-    $cardsTodo .= '<img class="card-img-top"'. 'src="../images/'. $dir.$fotos[2].'" ' .'alt="Card image">';
+
+    $cardsTodo .= '<div id="demo' . $row['id_producto'] . '" class="carousel slide" data-interval="false" data-ride="carousel">';
+    $cardsTodo .= '<ul class="carousel-indicators">' .
+        '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="0" class="active"</li>' .
+        '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="1"</li>' .
+        '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="2"</li>' .
+        '</ul>';
+
+    $cardsTodo .= '<div class="carousel-inner">';
+
+    foreach ($fotos as $llave => $foto) {
+        if ($llave == 0) {
+            $cardsTodo .= '<div class="carousel-item active">';
+        } else {
+            $cardsTodo .= '<div class="carousel-item">';
+        }
+        $cardsTodo .= '<img src="../images/' . $dir . $foto . '" class="img-fluid" alt="Image">';
+        $cardsTodo .= '</div>';
+    }
+
+    $cardsTodo .= '</div>';
+    $cardsTodo .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'].$iden . '" data-slide="prev">' .
+        '<span class="carousel-control-prev-icon"></span>' .
+        '</a>' .
+        '<a class="carousel-control-next" href="#demo' . $row['id_producto'].$iden . '" data-slide="next">' .
+        '<span class="carousel-control-next-icon"></span>' .
+        '</a>';
+    $cardsTodo .= '</div>';
+
+    //$cardsTodo .= '<img class="card-img-top"'. 'src="../images/'. $dir.$fotos[0].'" ' .'alt="Card image">';
     $cardsTodo .= '<div class="card-body">';
     $cardsTodo .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
     $cardsTodo .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
@@ -43,8 +74,38 @@ while ($row = mysqli_fetch_array($result)) {
     $cardsTodo .= '</div>';
     $cardsTodo .= '</div>';
     if ($row['fab_producto'] == "NVIDIA") {
+        $iden = 'b';
         $cardsNVIDIA .= '<div class="card">';
-        $cardsNVIDIA .= '<img class="card-img-top" src="../images/" alt="Card image">';
+
+        $cardsNVIDIA .= '<div id="demo' . $row['id_producto'].$iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
+        $cardsNVIDIA .= '<ul class="carousel-indicators">' .
+            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="0" class="active"</li>' .
+            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="1"</li>' .
+            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="2"</li>' .
+            '</ul>';
+
+        $cardsNVIDIA .= '<div class="carousel-inner">';
+
+        foreach ($fotos as $llave => $foto) {
+            if ($llave == 0) {
+                $cardsNVIDIA .= '<div class="carousel-item active">';
+            } else {
+                $cardsNVIDIA .= '<div class="carousel-item">';
+            }
+            $cardsNVIDIA .= '<img src="../images/' . $dir . $foto . '" class="img-fluid" alt="Image">';
+            $cardsNVIDIA .= '</div>';
+        }
+
+        $cardsNVIDIA .= '</div>';
+        $cardsNVIDIA .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'].$iden . '" data-slide="prev">' .
+            '<span class="carousel-control-prev-icon"></span>' .
+            '</a>' .
+            '<a class="carousel-control-next" href="#demo' . $row['id_producto'].$iden . '" data-slide="next">' .
+            '<span class="carousel-control-next-icon"></span>' .
+            '</a>';
+        $cardsNVIDIA .= '</div>';
+
+        //$cardsNVIDIA .= '<img class="card-img-top" src="../images/" alt="Card image">';
         $cardsNVIDIA .= '<div class="card-body">';
         $cardsNVIDIA .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
         $cardsNVIDIA .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
@@ -53,8 +114,38 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsNVIDIA .= '</div>';
         $cardsNVIDIA .= '</div>';
     } elseif ($row['fab_producto'] == "AMD") {
+        $iden = 'c';
         $cardsAMD .= '<div class="card">';
-        $cardsAMD .= '<img class="card-img-top" src="../images/" alt="Card image">';
+
+        $cardsAMD .= '<div id="demo' . $row['id_producto'].$iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
+        $cardsAMD .= '<ul class="carousel-indicators">' .
+            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="0" class="active"</li>' .
+            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="1"</li>' .
+            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="2"</li>' .
+            '</ul>';
+
+        $cardsAMD .= '<div class="carousel-inner">';
+
+        foreach ($fotos as $llave => $foto) {
+            if ($llave == 0) {
+                $cardsAMD .= '<div class="carousel-item active">';
+            } else {
+                $cardsAMD .= '<div class="carousel-item">';
+            }
+            $cardsAMD .= '<img src="../images/' . $dir . $foto . '" class="img-fluid" alt="Image">';
+            $cardsAMD .= '</div>';
+        }
+
+        $cardsAMD .= '</div>';
+        $cardsAMD .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'].$iden . '" data-slide="prev">' .
+            '<span class="carousel-control-prev-icon"></span>' .
+            '</a>' .
+            '<a class="carousel-control-next" href="#demo' . $row['id_producto'].$iden . '" data-slide="next">' .
+            '<span class="carousel-control-next-icon"></span>' .
+            '</a>';
+        $cardsAMD .= '</div>';
+
+        //$cardsAMD .= '<img class="card-img-top" src="../images/" alt="Card image">';
         $cardsAMD .= '<div class="card-body">';
         $cardsAMD .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
         $cardsAMD .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
