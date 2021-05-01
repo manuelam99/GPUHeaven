@@ -73,9 +73,9 @@ while ($row = mysqli_fetch_array($result)) {
     $cardsTodo .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
     $cardsTodo .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
     $cardsTodo .= '<div class="row">';
-    $cardsTodo .= '<a href="#" class="btn btn-primary col-md-4 col-s-12">Agregar a Carrito</a>';
-    $cardsTodo .= '<a href="#" class="btn btn-primary col-md-4 col-s-12">Comprar Ahora</a>';
-    $cardsTodo .= '<a href="#" class="btn btn-primary col-md-4 col-s-12">Ver Mas</a>';
+    $cardsTodo .= '<a href="#" class="btn btn-outline-primary col-lg-4 col-md-12 col-s-12">Carrito</a>';
+    $cardsTodo .= '<a href="#" class="btn btn-outline-success col-lg-4 col-md-12 col-s-12">Comprar</a>';
+    $cardsTodo .= '<a href="#" class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</a>';
     $cardsTodo .= '</div>';
     $cardsTodo .= '</div>';
     $cardsTodo .= '</div>';
@@ -116,7 +116,11 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsNVIDIA .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
         $cardsNVIDIA .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
         $cardsNVIDIA .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
-        $cardsNVIDIA .= '<a href="#" class="btn btn-primary">Agregar a Carrito</a>';
+        $cardsNVIDIA .= '<div class="row">';
+        $cardsNVIDIA .= '<a href="#" class="btn btn-outline-primary col-lg-4 col-md-12 col-s-12">Carrito</a>';
+        $cardsNVIDIA .= '<a href="#" class="btn btn-outline-success col-lg-4 col-md-12 col-s-12">Comprar</a>';
+        $cardsNVIDIA .= '<a href="#" class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</a>';
+        $cardsNVIDIA .= '</div>';
         $cardsNVIDIA .= '</div>';
         $cardsNVIDIA .= '</div>';
     } elseif ($row['fab_producto'] == "AMD") {
@@ -156,7 +160,11 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsAMD .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
         $cardsAMD .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
         $cardsAMD .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
-        $cardsAMD .= '<a href="#" class="btn btn-primary">Agregar a Carrito</a>';
+        $cardsAMD .= '<div class="row">';
+        $cardsAMD .= '<a href="#" class="btn btn-outline-primary col-lg-4 col-md-12 col-s-12">Carrito</a>';
+        $cardsAMD .= '<a href="#" class="btn btn-outline-success col-lg-4 col-md-12 col-s-12">Comprar</a>';
+        $cardsAMD .= '<a href="#" class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</a>';
+        $cardsAMD .= '</div>';
         $cardsAMD .= '</div>';
         $cardsAMD .= '</div>';
     }
