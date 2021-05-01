@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../js/filtros.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
     <title>GPU Heaven</title>
 </head>
 
@@ -52,7 +53,7 @@ while ($row = mysqli_fetch_array($result)) {
         } else {
             $cardsTodo .= '<div class="carousel-item">';
         }
-        $cardsTodo .= '<img src="../images/' . $dir . $foto . '" class="img-fluid" alt="Image">';
+        $cardsTodo .= '<img src="../images/' . $dir . $foto . '" class="imagen-fluid" alt="Image">';
         $cardsTodo .= '</div>';
     }
 
@@ -66,11 +67,15 @@ while ($row = mysqli_fetch_array($result)) {
     $cardsTodo .= '</div>';
 
     //$cardsTodo .= '<img class="card-img-top"'. 'src="../images/'. $dir.$fotos[0].'" ' .'alt="Card image">';
-    $cardsTodo .= '<div class="card-body" style="height: 50%">';
+    $cardsTodo .= '<div class="card-body">';
     $cardsTodo .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
     $cardsTodo .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
     $cardsTodo .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
-    $cardsTodo .= '<a href="#" class="btn btn-primary">Agregar a Carrito</a>';
+    $cardsTodo .= '<div class="row">';
+    $cardsTodo .= '<a href="#" class="btn btn-primary col-md-4 col-s-12">Agregar a Carrito</a>';
+    $cardsTodo .= '<a href="#" class="btn btn-primary col-md-4 col-s-12">Comprar Ahora</a>';
+    $cardsTodo .= '<a href="#" class="btn btn-primary col-md-4 col-s-12">Ver Mas</a>';
+    $cardsTodo .= '</div>';
     $cardsTodo .= '</div>';
     $cardsTodo .= '</div>';
     if ($row['fab_producto'] == "NVIDIA") {
@@ -92,7 +97,7 @@ while ($row = mysqli_fetch_array($result)) {
             } else {
                 $cardsNVIDIA .= '<div class="carousel-item">';
             }
-            $cardsNVIDIA .= '<img src="../images/' . $dir . $foto . '" class="img-fluid" alt="Image">';
+            $cardsNVIDIA .= '<img src="../images/' . $dir . $foto . '" class="imagen-fluid" alt="Image">';
             $cardsNVIDIA .= '</div>';
         }
 
@@ -132,7 +137,7 @@ while ($row = mysqli_fetch_array($result)) {
             } else {
                 $cardsAMD .= '<div class="carousel-item">';
             }
-            $cardsAMD .= '<img src="../images/' . $dir . $foto . '" class="img-fluid" alt="Image">';
+            $cardsAMD .= '<img src="../images/' . $dir . $foto . '" class="imagen-fluid" alt="Image">';
             $cardsAMD .= '</div>';
         }
 
