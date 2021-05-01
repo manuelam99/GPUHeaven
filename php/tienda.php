@@ -12,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../js/filtros.js"></script>
     <link rel="stylesheet" href="../css/main.css">
+    <link href="../open-iconic-master/open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <title>GPU Heaven</title>
 </head>
 
@@ -183,6 +184,7 @@ mysqli_close($con);
                 <a class="nav-link " href="#">Usuario</a>
             </li>
         </ul>
+        <span class="oi oi-cart" title="Cart" aria-hidden="true"></span>
     </nav>
     <div class="jumbotron">
         <h1 class="display-1 text-center">Los mejores precios, la mejor disponibilidad</h1>
