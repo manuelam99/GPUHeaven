@@ -39,11 +39,11 @@ while ($row = mysqli_fetch_array($result)) {
 
     $cardsTodo .= '<div class="card">';
 
-    $cardsTodo .= '<div id="demo' . $row['id_producto'].$iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
+    $cardsTodo .= '<div id="demo' . $row['id_producto'] . $iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
     $cardsTodo .= '<ul class="carousel-indicators">' .
-        '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="0" class="active"</li>' .
-        '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="1"</li>' .
-        '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="2"</li>' .
+        '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="0" class="active"</li>' .
+        '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="1"</li>' .
+        '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="2"</li>' .
         '</ul>';
 
     $cardsTodo .= '<div class="carousel-inner">';
@@ -59,10 +59,10 @@ while ($row = mysqli_fetch_array($result)) {
     }
 
     $cardsTodo .= '</div>';
-    $cardsTodo .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'].$iden . '" data-slide="prev">' .
+    $cardsTodo .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'] . $iden . '" data-slide="prev">' .
         '<span class="carousel-control-prev-icon"></span>' .
         '</a>' .
-        '<a class="carousel-control-next" href="#demo' . $row['id_producto'].$iden . '" data-slide="next">' .
+        '<a class="carousel-control-next" href="#demo' . $row['id_producto'] . $iden . '" data-slide="next">' .
         '<span class="carousel-control-next-icon"></span>' .
         '</a>';
     $cardsTodo .= '</div>';
@@ -83,11 +83,11 @@ while ($row = mysqli_fetch_array($result)) {
         $iden = 'b';
         $cardsNVIDIA .= '<div class="card">';
 
-        $cardsNVIDIA .= '<div id="demo' . $row['id_producto'].$iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
+        $cardsNVIDIA .= '<div id="demo' . $row['id_producto'] . $iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
         $cardsNVIDIA .= '<ul class="carousel-indicators">' .
-            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="0" class="active"</li>' .
-            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="1"</li>' .
-            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="2"</li>' .
+            '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="0" class="active"</li>' .
+            '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="1"</li>' .
+            '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="2"</li>' .
             '</ul>';
 
         $cardsNVIDIA .= '<div class="carousel-inner">';
@@ -103,10 +103,10 @@ while ($row = mysqli_fetch_array($result)) {
         }
 
         $cardsNVIDIA .= '</div>';
-        $cardsNVIDIA .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'].$iden . '" data-slide="prev">' .
+        $cardsNVIDIA .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'] . $iden . '" data-slide="prev">' .
             '<span class="carousel-control-prev-icon"></span>' .
             '</a>' .
-            '<a class="carousel-control-next" href="#demo' . $row['id_producto'].$iden . '" data-slide="next">' .
+            '<a class="carousel-control-next" href="#demo' . $row['id_producto'] . $iden . '" data-slide="next">' .
             '<span class="carousel-control-next-icon"></span>' .
             '</a>';
         $cardsNVIDIA .= '</div>';
@@ -123,11 +123,11 @@ while ($row = mysqli_fetch_array($result)) {
         $iden = 'c';
         $cardsAMD .= '<div class="card">';
 
-        $cardsAMD .= '<div id="demo' . $row['id_producto'].$iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
+        $cardsAMD .= '<div id="demo' . $row['id_producto'] . $iden . '" class="carousel slide" data-interval="false" data-ride="carousel">';
         $cardsAMD .= '<ul class="carousel-indicators">' .
-            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="0" class="active"</li>' .
-            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="1"</li>' .
-            '<li data-target="#demo' . $row['id_producto'].$iden . '" data-slide-to="2"</li>' .
+            '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="0" class="active"</li>' .
+            '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="1"</li>' .
+            '<li data-target="#demo' . $row['id_producto'] . $iden . '" data-slide-to="2"</li>' .
             '</ul>';
 
         $cardsAMD .= '<div class="carousel-inner">';
@@ -143,10 +143,10 @@ while ($row = mysqli_fetch_array($result)) {
         }
 
         $cardsAMD .= '</div>';
-        $cardsAMD .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'].$iden . '" data-slide="prev">' .
+        $cardsAMD .= '<a class="carousel-control-prev" href="#demo' . $row['id_producto'] . $iden . '" data-slide="prev">' .
             '<span class="carousel-control-prev-icon"></span>' .
             '</a>' .
-            '<a class="carousel-control-next" href="#demo' . $row['id_producto'].$iden . '" data-slide="next">' .
+            '<a class="carousel-control-next" href="#demo' . $row['id_producto'] . $iden . '" data-slide="next">' .
             '<span class="carousel-control-next-icon"></span>' .
             '</a>';
         $cardsAMD .= '</div>';
@@ -184,7 +184,9 @@ mysqli_close($con);
                 <a class="nav-link " href="#">Usuario</a>
             </li>
         </ul>
-        <span class="oi oi-cart" title="Cart" aria-hidden="true"></span>
+        <div class="float-right">
+            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+        </div>
     </nav>
     <div class="jumbotron">
         <h1 class="display-1 text-center">Los mejores precios, la mejor disponibilidad</h1>
