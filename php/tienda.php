@@ -176,7 +176,9 @@ mysqli_close($con);
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="../index.html">GPUH</a>
+        <a class="navbar-brand" href="../index.html">
+        <span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUH
+        </a>
 
         <!-- Links -->
         <ul class="navbar-nav">
@@ -193,7 +195,7 @@ mysqli_close($con);
             </li>
         </ul>
         <div class="float-right">
-            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+            <a href="#"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
         </div>
     </nav>
     <div class="jumbotron">
