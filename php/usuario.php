@@ -2,6 +2,11 @@
 <?php
 // Start the session
 session_start();
+
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: ./login.php");
+    exit;
+}
 ?>
 <html lang="en">
 
@@ -23,17 +28,16 @@ session_start();
 
 require_once "./coneccion.php";
 
+$id_usr = $_SESSION["id"];
+
 $query = "SELECT username, nom_usuario, email_usuario, fecha_nac, tarj_usuario, direc_usuario 
-                                    FROM usuarios WHERE id_usuario = '1';";
+                                    FROM usuarios WHERE id_usuario = '".$id_usr."';";
 
 $result = mysqli_query($con, $query);
 
 $usuario = mysqli_fetch_row($result);
 
 mysqli_close($con);
-
-
-
 ?>
 
 <body>
@@ -65,7 +69,7 @@ mysqli_close($con);
     <div class="container mt-3">
         <h2>Nombre: <?php echo $usuario[1] ?></h2>
         <h3>Username: <?php echo $usuario[0] ?></h3>
-
+        <a href="./logout.php"><button type="button" class="btn btn-danger">Logout</button></a>
         <hr />
         <ul class="nav nav-tabs justify-content-center">
             <li class="nav-item">

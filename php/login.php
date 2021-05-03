@@ -18,15 +18,15 @@ $username_err = $password_err = $login_err = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if username is empty
-    if (empty(trim($_POST["username"]))) {
+    if (empty(trim($_POST["uname"]))) {
         $username_err = "Favor de ingresar usuario";
     } else {
         $username = trim($_POST["uname"]);
     }
 
     // Check if password is empty
-    if (empty(trim($_POST["password"]))) {
-        $password_err = "Please enter your password.";
+    if (empty(trim($_POST["pswd"]))) {
+        $password_err = "Favor de ingresar contraseña";
     } else {
         $password = trim($_POST["pswd"]);
     }
@@ -127,49 +127,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </nav>
     <div class="container d-flex justify-content-center">
+
         <div class="row w-75 my-5">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation col my-auto" method="post" novalidate>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="col my-auto" method="post" novalidate>
                 <h2>Login</h2>
                 <div class="form-group">
                     <label for="uname">Usuario:</label>
-                    <input type="text" class="form-control" id="uname" placeholder="Ingresar Usuario" name="uname" required>
-                    <div class="valid-feedback">Valido.</div>
-                    <div class="invalid-feedback">Favor de ingresar usuario.</div>
+                    <input type="text" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" id="uname" placeholder="Ingresar Usuario" name="uname" value="<?php echo $username; ?>" required>
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Contraseña:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Ingresar Contraseña" name="pswd" required>
-                    <div class="valid-feedback">Valida.</div>
-                    <div class="invalid-feedback">Favor de ingresar contraseña.</div>
+                    <input type="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="pwd" placeholder="Ingresar Contraseña" name="pswd" required>
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
                 <span>¿No tienes cuenta?<a href="./registro.php">¡Registrate!</a></span>
+                <?php
+                if (!empty($login_err)) {
+                    echo '<div class="alert alert-danger alert-dismissible fade show my-3">';
+                    echo '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+                    echo  $login_err;
+                    echo '</div>';
+                }
+                ?>
             </form>
         </div>
 
     </div>
-
-
-    <script>
-        // Disable form submissions if there are invalid fields
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                // Get the forms we want to add validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
 </body>
 
 </html>
