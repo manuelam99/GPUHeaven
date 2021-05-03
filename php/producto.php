@@ -70,7 +70,7 @@ foreach ($fotos as $llave => $foto) {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="#">Usuario</a>
+                <a class="nav-link " href="./usuario.php">Usuario</a>
             </li>
         </ul>
         <div class="float-right">

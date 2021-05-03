@@ -200,7 +200,7 @@ mysqli_close($con);
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="#">Usuario</a>
+                <a class="nav-link " href="./usuario.php">Usuario</a>
             </li>
         </ul>
         <div class="float-right">

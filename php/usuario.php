@@ -54,7 +54,7 @@ mysqli_close($con);
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="./php/tienda.php">Compra</a>
+                <a class="nav-link" href="./tienda.php">Compra</a>
             </li>
 
             <li class="nav-item">
@@ -73,10 +73,6 @@ mysqli_close($con);
         <ul class="nav nav-tabs justify-content-center">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#info">Información</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#carrito">Carrito</a>
             </li>
 
             <li class="nav-item">
@@ -128,9 +124,6 @@ mysqli_close($con);
                     </div>
                     <button class="btn btn-success" type="submit" disabled>Guardar Cambios</button>
                 </form>
-            </div>
-            <div class="tab-pane container fade mt-4" id="carrito">
-
             </div>
             <div class="tab-pane container fade mt-4" id="compras">
 
