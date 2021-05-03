@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a class="nav-link " href="./usuario.php">Usuario</a>
             </li>
         </ul>
-        <div class="float-right">
+        <div class="nav navbar-nav">
             <a href="#"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
         </div>
     </nav>
