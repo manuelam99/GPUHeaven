@@ -22,6 +22,7 @@
     background-color: #444;
 }
 
-.hola{
-    color: red;
+.carousel a span {
+    background-color: #fff;
+    background-color: rgba(70, 70, 70, 0.25);
 }
