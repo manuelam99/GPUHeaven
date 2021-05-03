@@ -76,7 +76,7 @@ foreach ($fotos as $llave => $foto) {
 
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div id="demo" class="carousel slide col-lg-8" data-interval="false" data-ride="carousel">
+            <div id="demo" class="carousel slide col-lg-6" data-interval="false" data-ride="carousel">
 
                 <!-- Indicators -->
                 <ul class="carousel-indicators">
@@ -99,9 +99,10 @@ foreach ($fotos as $llave => $foto) {
                 </a>
 
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-6">
                 <h2><?php echo $producto[1] ?></h2>
                 <p><?php echo $producto[2] ?></p>
+                <p class="hola">PUTA MADRE</p>
             </div>
         </div>
     </div>
