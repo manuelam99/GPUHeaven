@@ -42,7 +42,7 @@ foreach ($fotos as $llave => $foto) {
     } else {
         $carousel .= '<div class="carousel-item">';
     }
-    $carousel .= '<img src="../images/' . $dir . $foto . '" class="img-fluid" alt="Image">';
+    $carousel .= '<img src="../images/' . $dir . $foto . '" class="img-fluid mx-auto d-block" alt="Image">';
     $carousel .= '</div>';
 }
 
@@ -74,9 +74,9 @@ foreach ($fotos as $llave => $foto) {
         </div>
     </nav>
 
-    <div class="container h-100">
-        <div class="row align-items-center h-100">
-            <div id="demo" class="carousel slide col-lg-6" data-interval="false" data-ride="carousel">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div id="demo" class="carousel slide col-lg-8" data-interval="false" data-ride="carousel">
 
                 <!-- Indicators -->
                 <ul class="carousel-indicators">
@@ -99,7 +99,7 @@ foreach ($fotos as $llave => $foto) {
                 </a>
 
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <h2><?php echo $producto[1] ?></h2>
                 <p><?php echo $producto[2] ?></p>
             </div>
