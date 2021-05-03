@@ -21,16 +21,11 @@ session_start();
 
 <?php
 
-$con = mysqli_connect("localhost", "root", "root", "gpu_heaven");
+require_once "./coneccion.php";
 
 $cardsTodo = "";
 $cardsAMD = "";
 $cardsNVIDIA = "";
-// Check connection
-if (mysqli_connect_errno()) {
-    $cards = "error";
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
 
 $result = mysqli_query($con, "SELECT * FROM productos;");
 

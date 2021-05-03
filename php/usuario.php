@@ -20,12 +20,8 @@ session_start();
 </head>
 
 <?php
-$con = mysqli_connect("localhost", "root", "root", "gpu_heaven");
-// Check connection
-if (mysqli_connect_errno()) {
-    $cards = "error";
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+
+require_once "./coneccion.php";
 
 $query = "SELECT username, nom_usuario, email_usuario, fecha_nac, tarj_usuario, direc_usuario 
                                     FROM usuarios WHERE id_usuario = '1';";
@@ -69,6 +65,7 @@ mysqli_close($con);
     <div class="container mt-3">
         <h2>Nombre: <?php echo $usuario[1] ?></h2>
         <h3>Username: <?php echo $usuario[0] ?></h3>
+
         <hr />
         <ul class="nav nav-tabs justify-content-center">
             <li class="nav-item">

@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </nav>
     <div class="container d-flex justify-content-center">
         <div class="row w-75 my-5">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation col my-auto" novalidate>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation col my-auto" method="post" novalidate>
                 <h2>Login</h2>
                 <div class="form-group">
                     <label for="uname">Usuario:</label>
@@ -143,6 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="invalid-feedback">Favor de ingresar contraseña.</div>
                 </div>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
+                <span>¿No tienes cuenta?<a href="./registro.php">¡Registrate!</a></span>
             </form>
         </div>
 

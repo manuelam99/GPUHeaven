@@ -21,12 +21,7 @@ session_start();
 
 <?php
 
-$con = mysqli_connect("localhost", "root", "root", "gpu_heaven");
-// Check connection
-if (mysqli_connect_errno()) {
-    $cards = "error";
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+require_once "./coneccion.php";
 
 $query = "SELECT * FROM productos WHERE id_producto ='" . $_POST['prod'] . "'";
 
