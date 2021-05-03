@@ -72,11 +72,13 @@ while ($row = mysqli_fetch_array($result)) {
     $cardsTodo .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
     $cardsTodo .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
     $cardsTodo .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
+    $cardsTodo .= '<form action="./producto.php" method="post">';
     $cardsTodo .= '<div class="row">';
     $cardsTodo .= '<a href="#" class="btn btn-outline-primary col-lg-4 col-md-12 col-s-12">Carrito</a>';
     $cardsTodo .= '<a href="#" class="btn btn-outline-success col-lg-4 col-md-12 col-s-12">Comprar</a>';
-    $cardsTodo .= '<a href="#" class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</a>';
+    $cardsTodo .= '<button type="submit" name="prod" value="'.$row['id_producto'].'" '.'class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</button>';
     $cardsTodo .= '</div>';
+    $cardsTodo .= '</form>';
     $cardsTodo .= '</div>';
     $cardsTodo .= '</div>';
     if ($row['fab_producto'] == "NVIDIA") {
