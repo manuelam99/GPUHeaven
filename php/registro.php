@@ -126,12 +126,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="#"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
         </div>
     </nav>
-    <div class="container d-flex justify-content-center">
-        <div class="row w-75 my-5">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation col my-auto" novalidate>
-                <h2>Login</h2>
+    <div class="container">
+        <div class="row">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation col-sm-12 col-md-6 my-5" novalidate>
+                <h2>Registrate</h2>
                 <div class="form-group">
-                    <label for="uname">Usuario:</label>
+                    <label for="uname">Username:</label>
                     <input type="text" class="form-control" id="uname" placeholder="Ingresar Usuario" name="uname" required>
                     <div class="valid-feedback">Valido.</div>
                     <div class="invalid-feedback">Favor de ingresar usuario.</div>
@@ -142,7 +142,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="valid-feedback">Valida.</div>
                     <div class="invalid-feedback">Favor de ingresar contraseña.</div>
                 </div>
-                <button type="submit" class="btn btn-primary">Ingresar</button>
+                <div class="form-group">
+                    <label for="pwd2">Confirmar Contraseña:</label>
+                    <input type="password" class="form-control" id="pwd2" placeholder="Ingresar Contraseña" name="pswd2" required>
+                    <div class="valid-feedback">Valida.</div>
+                    <div class="invalid-feedback">Favor de ingresar contraseña.</div>
+                </div>
+                <div class="form-group">
+                    <label for="uname">Nombre:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Ingresar Nombre" name="name" required>
+                    <div class="valid-feedback">Valido.</div>
+                    <div class="invalid-feedback">Favor de ingresar Nombre.</div>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" class="form-control" id="correo" placeholder="Ingresar Correo" name="correo" required>
+                    <div class="valid-feedback">Valido.</div>
+                    <div class="invalid-feedback">Favor de ingresar Correo.</div>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha de Nacimiento:</label>
+                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                    <div class="valid-feedback">Valida.</div>
+                    <div class="invalid-feedback">Favor de ingresar Fecha.</div>
+                </div>
+                <div class="form-group">
+                    <label for="tarjeta">Tarjeta:</label>
+                    <input type="text" class="form-control" id="tarjeta" placeholder="Ingresar Tarjeta" name="tarjeta" required>
+                    <div class="valid-feedback">Valida.</div>
+                    <div class="invalid-feedback">Favor de ingresar Tarjeta.</div>
+                </div>
+                <div class="form-group">
+                    <label for="direc">Dirección:</label>
+                    <input type="text" class="form-control" id="direc" placeholder="Ingresar Dirección" name="direc" required>
+                    <div class="valid-feedback">Valida.</div>
+                    <div class="invalid-feedback">Favor de ingresar Direccion.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Crear Cuenta</button>
             </form>
         </div>
 
