@@ -67,7 +67,7 @@ mysqli_close($con);
     </nav>
 
     <div class="container mt-3">
-        <h2>Nombre: <?php echo (empty($usuario[1])) ? "Anónimo" : $usuario[1]; ?></h2>
+        <h2>Nombre: <?php echo (empty($usuario[1])) ? "Anónimo" : htmlspecialchars($usuario[1]); ?></h2>
         <h3>Username: <?php echo $usuario[0] ?></h3>
         <a href="./logout.php"><button type="button" class="btn btn-danger">Logout</button></a>
         <hr />

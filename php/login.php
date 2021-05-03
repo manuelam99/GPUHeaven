@@ -21,17 +21,17 @@ $username_err = $password_err = $login_err = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if username is empty
-    if (empty(trim($_POST["uname"]))) {
+    if (empty(test_input($_POST["uname"]))) {
         $username_err = "Favor de ingresar usuario";
     } else {
-        $username = trim($_POST["uname"]);
+        $username = test_input($_POST["uname"]);
     }
 
     // Check if password is empty
-    if (empty(trim($_POST["pswd"]))) {
+    if (empty(test_input($_POST["pswd"]))) {
         $password_err = "Favor de ingresar contraseña";
     } else {
-        $password = trim($_POST["pswd"]);
+        $password = test_input($_POST["pswd"]);
     }
 
     // Validate credentials
@@ -86,6 +86,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Close connection
     mysqli_close($con);
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 ?>
 <html lang="en">

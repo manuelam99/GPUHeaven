@@ -14,16 +14,16 @@ require_once "./coneccion.php";
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $correo = $fecha = $tarjeta = $direcc = $nombre = "";
-$username_err = $password_err = $confirm_password_err = $correo_err = $fecha_err = $tarjeta_err = $direcc_err = "";
+$username_err = $nombre_err = $password_err = $confirm_password_err = $correo_err = $fecha_err = $tarjeta_err = $direcc_err = "";
 $reg_error = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate username
-    if(empty(trim($_POST["uname"]))){
+    if(empty(test_input($_POST["uname"]))){
         $username_err = "Favor de ingresar usuario";
-    } else{
+    }else{
         // Prepare a select statement
         $sql = "SELECT id_usuario FROM usuarios WHERE username = ?";
         
@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
             // Set parameters
-            $param_username = trim($_POST["uname"]);
+            $param_username = test_input($_POST["uname"]);
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     $username_err = "Usuario ya existe";
                 } else{
-                    $username = trim($_POST["uname"]);
+                    $username = test_input($_POST["uname"]);
                 }
             }else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -54,52 +54,56 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Validate password
-    if(empty(trim($_POST["pswd"]))){
+    if(empty(test_input($_POST["pswd"]))){
         $password_err = "Favor de ingresar contraseña";     
-    }elseif(strlen(trim($_POST["pswd"])) < 6){
+    }elseif(strlen(test_input($_POST["pswd"])) < 6){
         $password_err = "Favor de ingresar contraseña de al menos 6 caracteres";
     } else{
-        $password = trim($_POST["pswd"]);
+        $password = test_input($_POST["pswd"]);
     }
     
     // Validate confirm password
-    if(empty(trim($_POST["pswd2"]))){
+    if(empty(test_input($_POST["pswd2"]))){
         $confirm_password_err = "Favor de confirmar contraseña";
     }else{
-        $confirm_password = trim($_POST["pswd2"]);
+        $confirm_password = test_input($_POST["pswd2"]);
         if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Contraseñas no son iguales";
         }
     }
 
-    $nombre = trim($_POST["name"]);
+    if(!preg_match("/^[a-zA-Z ]*$/",$_POST["name"])){
+        $nombre_err = "Solo se permiten letras y espacios en blanco";
+    }else{
+        $nombre = test_input($_POST["name"]);
+    }
 
     //Validar correo
-    if(empty(trim($_POST["correo"]))){
+    if(empty(test_input($_POST["correo"]))){
         $correo_err = "Favor de ingresar correo";
     }else{
-        $correo = trim($_POST["correo"]);
+        $correo = test_input($_POST["correo"]);
     }
 
     //Validar fecha
-    if(empty(trim($_POST["fecha"]))){
+    if(empty(test_input($_POST["fecha"]))){
         $fecha_err = "Favor de ingresar fecha de nacimiento";
     }else{
-        $fecha = trim($_POST["fecha"]);
+        $fecha = test_input($_POST["fecha"]);
     }
 
     //Validar tarjeta
-    if(empty(trim($_POST["tarjeta"]))){
+    if(empty(test_input($_POST["tarjeta"]))){
         $tarjeta_err = "Favor de ingresar tarjeta";
     }else{
-        $tarjeta = trim($_POST["tarjeta"]);
+        $tarjeta = test_input($_POST["tarjeta"]);
     }
 
     //Validar direccion
-    if(empty(trim($_POST["direc"]))){
+    if(empty(test_input($_POST["direc"]))){
         $direcc_err = "Favor de ingresar dirección";
     }else{
-        $direcc = trim($_POST["direc"]);
+        $direcc = test_input($_POST["direc"]);
     }
 
     $bandera = empty($username_err) && empty($password_err) && empty($confirm_password_err) 
@@ -143,6 +147,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Close connection
     mysqli_close($link);
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 ?>
 <html lang="en">
@@ -207,7 +218,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
                 <div class="form-group">
                     <label for="uname">Nombre:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Ingresar Nombre" name="name" value="<?php echo $nombre; ?>">
+                    <input type="text" class="form-control <?php echo (!empty($nombre_err)) ? 'is-invalid' : ''; ?>" id="name" placeholder="Ingresar Nombre" name="name" value="<?php echo $nombre; ?>">
+                    <div class="invalid-feedback"><?php echo $nombre_err; ?></div>
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo:</label>
