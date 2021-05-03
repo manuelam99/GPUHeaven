@@ -70,7 +70,7 @@ while ($row = mysqli_fetch_array($result)) {
     $cardsTodo .= '<div class="card-body">';
     $cardsTodo .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
     $cardsTodo .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
-    $cardsTodo .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
+    $cardsTodo .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
     $cardsTodo .= '<form action="./producto.php" method="post">';
     $cardsTodo .= '<div class="row">';
     $cardsTodo .= '<a href="#" class="btn btn-outline-primary col-lg-4 col-md-12 col-s-12">Carrito</a>';
@@ -116,12 +116,14 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsNVIDIA .= '<div class="card-body">';
         $cardsNVIDIA .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
         $cardsNVIDIA .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
-        $cardsNVIDIA .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
+        $cardsNVIDIA .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
+        $cardsNVIDIA .= '<form action="./producto.php" method="post">';
         $cardsNVIDIA .= '<div class="row">';
         $cardsNVIDIA .= '<a href="#" class="btn btn-outline-primary col-lg-4 col-md-12 col-s-12">Carrito</a>';
         $cardsNVIDIA .= '<a href="#" class="btn btn-outline-success col-lg-4 col-md-12 col-s-12">Comprar</a>';
-        $cardsNVIDIA .= '<a href="#" class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</a>';
+        $cardsNVIDIA .= '<button type="submit" name="prod" value="'.$row['id_producto'].'" '.'class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</button>';
         $cardsNVIDIA .= '</div>';
+        $cardsNVIDIA .= '</form>';
         $cardsNVIDIA .= '</div>';
         $cardsNVIDIA .= '</div>';
     } elseif ($row['fab_producto'] == "AMD") {
@@ -160,12 +162,14 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsAMD .= '<div class="card-body">';
         $cardsAMD .= '<h4 class="card-title">' . $row['nom_producto'] . '</h4>';
         $cardsAMD .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
-        $cardsAMD .= '<p class="card-text">' . '$' . $row['prec_producto'] . '</p>';
+        $cardsAMD .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
+        $cardsAMD .= '<form action="./producto.php" method="post">';
         $cardsAMD .= '<div class="row">';
         $cardsAMD .= '<a href="#" class="btn btn-outline-primary col-lg-4 col-md-12 col-s-12">Carrito</a>';
         $cardsAMD .= '<a href="#" class="btn btn-outline-success col-lg-4 col-md-12 col-s-12">Comprar</a>';
-        $cardsAMD .= '<a href="#" class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</a>';
+        $cardsAMD .= '<button type="submit" name="prod" value="'.$row['id_producto'].'" '.'class="btn btn-outline-info col-lg-4 col-md-12 col-s-12">Ver Mas</button>';
         $cardsAMD .= '</div>';
+        $cardsAMD .= '</form>';
         $cardsAMD .= '</div>';
         $cardsAMD .= '</div>';
     }

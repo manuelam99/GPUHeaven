@@ -102,7 +102,12 @@ foreach ($fotos as $llave => $foto) {
             <div class="col-lg-6">
                 <h2><?php echo $producto[1] ?></h2>
                 <p><?php echo $producto[2] ?></p>
-                <p class="hola">PUTA MADRE</p>
+                <p>Precio: $<?php echo number_format($producto[4]) ?></p>
+                <p>Stock: <?php echo $producto[5] ?></p>
+                <div class="container d-flex justify-content-center">
+                    <button type="button" class="btn btn-outline-primary mx-4">Agregar a Carrito</button>
+                    <button type="button" class="btn btn-outline-success mx-4">Comprar Ahora</button>
+                </div>
             </div>
         </div>
     </div>
