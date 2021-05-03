@@ -42,7 +42,7 @@
     </nav>
     <div class="container">
         <div class="row">
-            <form action="hola.php" class="needs-validation col-sm-12 col-md-6 my-auto" novalidate>
+            <form action="#" class="needs-validation col-sm-12 col-md-6 my-auto" novalidate>
                 <h2>Login</h2>
                 <div class="form-group">
                     <label for="uname">Usuario:</label>
@@ -59,8 +59,8 @@
                 <button type="submit" class="btn btn-primary">Ingresar</button>
             </form>
 
-            <form action="hola.php" class="needs-validation col-sm-12 col-md-6 my-5" novalidate>
-                <h2>No tienes cuenta? Crea una!</h2>
+            <form action="#" class="needs-validation col-sm-12 col-md-6 my-5" novalidate>
+                <h2>¿No tienes cuenta? ¡Crea una!</h2>
                 <div class="form-group">
                     <label for="uname">Username:</label>
                     <input type="text" class="form-control" id="uname" placeholder="Ingresar Usuario" name="uname" required>
