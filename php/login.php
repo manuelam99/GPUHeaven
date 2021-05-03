@@ -22,14 +22,14 @@ session_start();
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand" href="../index.php">
             <span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUH
         </a>
 
         <!-- Links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="../index.html">Inicio</a>
+                <a class="nav-link" href="../index.php">Inicio</a>
             </li>
 
             <li class="nav-item">
