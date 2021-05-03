@@ -133,7 +133,7 @@ function test_input($data) {
             </li>
         </ul>
         <div class="nav navbar-nav">
-            <a href="#"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
+            <a href="./carrito.php"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
         </div>
     </nav>
     <div class="container d-flex justify-content-center">

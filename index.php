@@ -41,7 +41,7 @@ session_start();
             </li>
         </ul>
         <div class="nav navbar-nav">
-            <a href="#"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
+            <a href="./php/carrito.php"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
         </div>
     </nav>
     <div class="jumbotron">
