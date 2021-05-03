@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form-group">
                     <label for="pwd">Contraseña:</label>
-                    <input type="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="pwd" placeholder="Ingresar Contraseña" name="pswd" required>
+                    <input type="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="pwd" placeholder="Ingresar Contraseña" name="pswd" value="<?php echo $password; ?>" required>
                     <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
