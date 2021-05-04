@@ -38,7 +38,27 @@ $query = "SELECT p.nom_producto AS nombre, p.prec_producto AS precio, c.cantidad
 
 $result = mysqli_query($con, $query);
 
+$contenidoCarrito = "";
+
 while ($row = mysqli_fetch_array($result)) {
+    $dir = $row['ruta_f'] . '/';
+    $fotos = array_slice(scandir('../images/' . $dir), 2);
+
+    $contenidoCarrito .= '<hr>';
+
+    $contenidoCarrito .= '<div class="row align-items-center justify-content-center">';
+    $contenidoCarrito .= '<div class="col-lg-4">';
+    $contenidoCarrito .= '<img src="../images/' . $dir . $fotos[0] . '" alt="Imagen" class="imagen-fluid">';
+    $contenidoCarrito .= '</div';
+    $contenidoCarrito .= '<div class="col-lg-4">';
+    $contenidoCarrito .= '<p>' . $row['nombre'] . '</p><p>$' . number_format($row['precio']) . '</p><p>Unidades: ' . $row['cantidad'] . '</p>';
+    $contenidoCarrito .= '</div';
+    $contenidoCarrito .= '<div class="col-lg-4">';
+    $contenidoCarrito .= '<button type="button" class="btn btn-danger">Eliminar</button>';
+    $contenidoCarrito .= '</div';
+    $contenidoCarrito .= '</div';
+
+    $contenidoCarrito .= '<hr>';
 }
 
 mysqli_close($con);
@@ -71,12 +91,13 @@ mysqli_close($con);
     </nav>
 
     <div class="container mt-3">
+        <?php echo (!empty($contenidoCarrito)) ? $contenidoCarrito : "<h2>Carrito Vacio</h2>"; ?>
         <hr>
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-4">
                 <img src="" alt="Imagen" class="imagen-fluid">
             </div>
-            <div class="col-lg-4 text-center">
+            <div class="col-lg-4">
                 <p>Nombre</p>
                 <p>Precio</p>
                 <p>Cantidad</p>
