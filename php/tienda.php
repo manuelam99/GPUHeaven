@@ -71,7 +71,7 @@ while ($row = mysqli_fetch_array($result)) {
     $cardsTodo .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
     $cardsTodo .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
     $cardsTodo .= '<div class="row">';
-    $cardsTodo .= '<form action="" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
+    $cardsTodo .= '<form action="./agregarACarrito.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
     $cardsTodo .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100">Carrito</button>';
     $cardsTodo .= '</form>';
     $cardsTodo .= '<form action="" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
@@ -121,7 +121,7 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsNVIDIA .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
         $cardsNVIDIA .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
         $cardsNVIDIA .= '<div class="row">';
-        $cardsNVIDIA .= '<form action="" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
+        $cardsNVIDIA .= '<form action="./agregarACarrito.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
         $cardsNVIDIA .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100">Carrito</button>';
         $cardsNVIDIA .= '</form>';
         $cardsNVIDIA .= '<form action="" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
@@ -171,7 +171,7 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsAMD .= '<p class="card-text">' . 'Stock: ' . $row['stock_producto'] . '</p>';
         $cardsAMD .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
         $cardsAMD .= '<div class="row">';
-        $cardsAMD .= '<form action="" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
+        $cardsAMD .= '<form action="./agregarACarrito.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
         $cardsAMD .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100">Carrito</button>';
         $cardsAMD .= '</form>';
         $cardsAMD .= '<form action="" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';

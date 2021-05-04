@@ -2,12 +2,12 @@
 <?php
 // Start the session
 session_start();
-/*
+
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ./login.php");
     exit;
 }
-*/
+
 ?>
 <html lang="en">
 
@@ -39,6 +39,7 @@ $query = "SELECT p.nom_producto AS nombre, p.prec_producto AS precio, c.cantidad
 $result = mysqli_query($con, $query);
 
 $contenidoCarrito = "";
+$subtotal = 0.0;
 
 while ($row = mysqli_fetch_array($result)) {
     $dir = $row['ruta_f'] . '/';
@@ -49,16 +50,19 @@ while ($row = mysqli_fetch_array($result)) {
     $contenidoCarrito .= '<div class="row align-items-center justify-content-center">';
     $contenidoCarrito .= '<div class="col-lg-4">';
     $contenidoCarrito .= '<img src="../images/' . $dir . $fotos[0] . '" alt="Imagen" class="imagen-fluid">';
-    $contenidoCarrito .= '</div';
+    $contenidoCarrito .= '</div>';
     $contenidoCarrito .= '<div class="col-lg-4">';
-    $contenidoCarrito .= '<p>' . $row['nombre'] . '</p><p>$' . number_format($row['precio']) . '</p><p>Unidades: ' . $row['cantidad'] . '</p>';
-    $contenidoCarrito .= '</div';
+    $contenidoCarrito .= '<h4>' . $row['nombre'] . '</h4>
+                          <p>$' . number_format($row['precio']) . '</p>
+                          <p>Unidades: ' . $row['cantidad'] . '</p>';
+    $contenidoCarrito .= '</div>';
     $contenidoCarrito .= '<div class="col-lg-4">';
     $contenidoCarrito .= '<button type="button" class="btn btn-danger">Eliminar</button>';
-    $contenidoCarrito .= '</div';
-    $contenidoCarrito .= '</div';
+    $contenidoCarrito .= '</div>';
+    $contenidoCarrito .= '</div>';
 
     $contenidoCarrito .= '<hr>';
+    $subtotal += $row['precio']*$row['cantidad'];
 }
 
 mysqli_close($con);
@@ -92,21 +96,7 @@ mysqli_close($con);
 
     <div class="container mt-3">
         <?php echo (!empty($contenidoCarrito)) ? $contenidoCarrito : "<h2>Carrito Vacio</h2>"; ?>
-        <hr>
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-4">
-                <img src="" alt="Imagen" class="imagen-fluid">
-            </div>
-            <div class="col-lg-4">
-                <p>Nombre</p>
-                <p>Precio</p>
-                <p>Cantidad</p>
-            </div>
-            <div class="col-lg-4">
-                <button type="button" class="btn btn-danger">Eliminar</button>
-            </div>
-        </div>
-        <hr>
+        <h5 class="display-4">Subtotal: $<?php echo number_format($subtotal); ?></h5>
     </div>
 
 </body>
