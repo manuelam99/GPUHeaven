@@ -19,6 +19,19 @@ session_start();
     <title>GPU Heaven</title>
 </head>
 
+<?php 
+
+require_once "./php/coneccion.php";
+
+$id_usr = $_SESSION["id"];
+$queryCarrito = "SELECT id_usuario from carrito WHERE id_usuario = '" . $id_usr . "';";
+
+$resultQueryCarrito = mysqli_query($con, $queryCarrito);
+$articulos = mysqli_num_rows($resultQueryCarrito);
+
+mysqli_close($con);
+?>
+
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
@@ -41,7 +54,10 @@ session_start();
             </li>
         </ul>
         <div class="nav navbar-nav">
-            <a href="./php/carrito.php"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
+            <a href="./php/carrito.php">
+            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+            <?php echo ($articulos>0) ? '<span class="badge badge-danger rounded-circle">'. $articulos .'</span>': '' ?>
+            </a>
         </div>
     </nav>
     <div class="jumbotron">

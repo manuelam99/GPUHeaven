@@ -23,6 +23,12 @@ session_start();
 
 require_once "./coneccion.php";
 
+$id_usr = $_SESSION["id"];
+$queryCarrito = "SELECT id_usuario from carrito WHERE id_usuario = '" . $id_usr . "';";
+
+$resultQueryCarrito = mysqli_query($con, $queryCarrito);
+$articulos = mysqli_num_rows($resultQueryCarrito);
+
 $query = "SELECT * FROM productos WHERE id_producto ='" . $_POST['prod'] . "'";
 
 $result = mysqli_query($con, $query);
@@ -69,7 +75,10 @@ foreach ($fotos as $llave => $foto) {
             </li>
         </ul>
         <div class="nav navbar-nav">
-            <a href="./carrito.php"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
+            <a href="./carrito.php">
+            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+            <?php echo ($articulos>0) ? '<span class="badge badge-danger rounded-circle">'. $articulos .'</span>': '' ?>
+            </a>
         </div>
     </nav>
 

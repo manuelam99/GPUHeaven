@@ -38,6 +38,8 @@ $query = "SELECT p.nom_producto AS nombre, p.prec_producto AS precio, c.cantidad
 
 $result = mysqli_query($con, $query);
 
+$articulos = mysqli_num_rows($result);
+
 $contenidoCarrito = "";
 $subtotal = 0.0;
 
@@ -90,7 +92,10 @@ mysqli_close($con);
             </li>
         </ul>
         <div class="nav navbar-nav">
-            <a href="./carrito.php"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
+            <a href="./carrito.php">
+            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+            <?php echo ($articulos>0) ? '<span class="badge badge-danger rounded-circle">'. $articulos .'</span>': '' ?>
+            </a>
         </div>
     </nav>
 

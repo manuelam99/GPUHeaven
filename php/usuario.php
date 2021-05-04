@@ -3,7 +3,7 @@
 // Start the session
 session_start();
 
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: ./login.php");
     exit;
 }
@@ -31,10 +31,14 @@ require_once "./coneccion.php";
 $id_usr = $_SESSION["id"];
 
 $query = "SELECT username, nom_usuario, email_usuario, fecha_nac, tarj_usuario, direc_usuario 
-                                    FROM usuarios WHERE id_usuario = '".$id_usr."';";
+                                    FROM usuarios WHERE id_usuario = '" . $id_usr . "';";
+
+$queryCarrito = "SELECT id_usuario from carrito WHERE id_usuario = '" . $id_usr . "';";
+
+$resultQueryCarrito = mysqli_query($con, $queryCarrito);
+$articulos = mysqli_num_rows($resultQueryCarrito);
 
 $result = mysqli_query($con, $query);
-
 $usuario = mysqli_fetch_row($result);
 
 mysqli_close($con);
@@ -62,7 +66,10 @@ mysqli_close($con);
             </li>
         </ul>
         <div class="nav navbar-nav">
-            <a href="./carrito.php"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
+            <a href="./carrito.php">
+                <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+                <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
+            </a>
         </div>
     </nav>
 
