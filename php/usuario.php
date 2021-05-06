@@ -35,11 +35,30 @@ $query = "SELECT username, nom_usuario, email_usuario, fecha_nac, tarj_usuario, 
 
 $queryCarrito = "SELECT id_usuario from carrito WHERE id_usuario = '" . $id_usr . "';";
 
+$queryCompras = "SELECT p.nom_producto AS pNombre, t.cantidad AS cantidad, t.precio AS precio, t.fecha AS fecha
+                 FROM productos p, transacciones t 
+                 WHERE t.id_producto = p.id_producto 
+                 AND t.id_usuario = " . $id_usr . ";";
+
+
 $resultQueryCarrito = mysqli_query($con, $queryCarrito);
 $articulos = mysqli_num_rows($resultQueryCarrito);
 
 $result = mysqli_query($con, $query);
 $usuario = mysqli_fetch_row($result);
+
+$resultQueryCompras = mysqli_query($con, $queryCompras);
+
+$compras = "";
+while ($row = mysqli_fetch_array($resultQueryCompras)) {
+    $precio = '$'.number_format($row['precio']);
+    $compras .= "<tr>";
+    $compras .= "<td>{$row['pNombre']}</td>";
+    $compras .= "<td>{$row['cantidad']}</td>";
+    $compras .= "<td>{$precio}</td>";
+    $compras .= "<td>{$row['fecha']}</td>";
+    $compras .= "</tr>";
+}
 
 mysqli_close($con);
 ?>
@@ -134,7 +153,21 @@ mysqli_close($con);
                 </form>
             </div>
             <div class="tab-pane container fade mt-4" id="compras">
-
+                <div class="container">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php echo $compras ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

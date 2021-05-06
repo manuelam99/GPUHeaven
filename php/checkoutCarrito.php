@@ -31,7 +31,7 @@ require_once "./coneccion.php";
 
 $id_usr = $_SESSION["id"];
 
-$query = "SELECT p.nom_producto AS nombre, p.prec_producto AS precio, c.cantidad_producto AS cantidad, 
+$query = "SELECT p.nom_producto AS nombre, p.prec_producto AS precio, c.cantidad_producto AS cantidad, p.id_producto AS id_prod, 
                                                 p.fotos_producto AS ruta_f, p.stock_producto AS stock  
           FROM carrito c, productos p 
           WHERE p.id_producto = c.id_producto AND c.id_usuario = '" . $id_usr . "';";
@@ -42,6 +42,8 @@ $articulos = mysqli_num_rows($result);
 
 $contenidoCarrito = "";
 $subtotal = 0.0;
+$sqlInsert = "INSERT INTO transacciones (id_producto, id_usuario, cantidad, precio) VALUES";
+$sqlUpdate = "";
 
 while ($row = mysqli_fetch_array($result)) {
     $dir = $row['ruta_f'] . '/';
@@ -50,22 +52,25 @@ while ($row = mysqli_fetch_array($result)) {
     $contenidoCarrito .= '<hr>';
 
     $contenidoCarrito .= '<div class="row align-items-center justify-content-center">';
-    $contenidoCarrito .= '<div class="col-lg-4">';
+    $contenidoCarrito .= '<div class="col-lg-6">';
     $contenidoCarrito .= '<img src="../images/' . $dir . $fotos[0] . '" alt="Imagen" class="imagen-fluid">';
     $contenidoCarrito .= '</div>';
-    $contenidoCarrito .= '<div class="col-lg-4">';
+    $contenidoCarrito .= '<div class="col-lg-6">';
     $contenidoCarrito .= '<h4>' . $row['nombre'] . '</h4>
                           <p>$' . number_format($row['precio']) . '</p>
                           <p>Unidades: ' . $row['cantidad'] . '</p>';
     $contenidoCarrito .= '</div>';
-    $contenidoCarrito .= '<div class="col-lg-4">';
-    $contenidoCarrito .= '<button type="button" class="btn btn-danger">Eliminar</button>';
     $contenidoCarrito .= '</div>';
-    $contenidoCarrito .= '</div>';
-
     $contenidoCarrito .= '<hr>';
     $subtotal += $row['precio'] * $row['cantidad'];
+
+    $sqlInsert .= "(" . $row['id_prod'] . ", " . $id_usr . ", " . $row['cantidad'] . ", " . $row['precio'] * $row['cantidad'] . "),";
+    $sqlUpdate .= "UPDATE productos SET stock_producto = stock_producto - ".$row['cantidad']." WHERE id_producto = ".$row['id_prod'].";";
 }
+
+$sqlInsert = rtrim($sqlInsert, ',');
+$sqlInsert .= ";";
+
 
 mysqli_close($con);
 ?>
@@ -103,10 +108,13 @@ mysqli_close($con);
         <?php echo (!empty($contenidoCarrito)) ? $contenidoCarrito : "<h2>Carrito Vacio</h2>"; ?>
         <div class="row align-items-center justify-content-center my-5">
             <div class="col-lg-6">
-                <h5 class="display-4 text-center">Subotal: $<?php echo number_format($subtotal); ?></h5>
+                <h5 class="display-4 text-center">Total: $<?php echo number_format($subtotal); ?></h5>
             </div>
             <div class="col-lg-6 text-center">
-                    <a href="./checkoutCarrito.php"><button type="button" class="btn btn-success">Proceder a Checkout</button></a>
+                <form action="./compra.php" method="post">
+                    <input type="text" name="sqlU" class="d-none" value="<?php echo $sqlUpdate ?>" readonly>
+                    <button type="submit" class="btn btn-success" name="sqlI" value="<?php echo$sqlInsert ?>">Confirmar Compra</button>
+                </form>
             </div>
         </div>
     </div>

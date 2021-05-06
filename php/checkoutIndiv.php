@@ -3,10 +3,10 @@
 // Start the session
 session_start();
 
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+/*if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ./login.php");
     exit;
-}
+}*/
 
 ?>
 <html lang="en">
@@ -64,7 +64,7 @@ while ($row = mysqli_fetch_array($result)) {
     $contenidoCarrito .= '</div>';
 
     $contenidoCarrito .= '<hr>';
-    $subtotal += $row['precio'] * $row['cantidad'];
+    $subtotal += $row['precio']*$row['cantidad'];
 }
 
 mysqli_close($con);
@@ -93,22 +93,15 @@ mysqli_close($con);
         </ul>
         <div class="nav navbar-nav">
             <a href="./carrito.php">
-                <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
-                <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
+            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+            <?php echo ($articulos>0) ? '<span class="badge badge-danger rounded-circle">'. $articulos .'</span>': '' ?>
             </a>
         </div>
     </nav>
 
     <div class="container mt-3">
         <?php echo (!empty($contenidoCarrito)) ? $contenidoCarrito : "<h2>Carrito Vacio</h2>"; ?>
-        <div class="row align-items-center justify-content-center my-5">
-            <div class="col-lg-6">
-                <h5 class="display-4 text-center">Subotal: $<?php echo number_format($subtotal); ?></h5>
-            </div>
-            <div class="col-lg-6 text-center">
-                    <a href="./checkoutCarrito.php"><button type="button" class="btn btn-success">Proceder a Checkout</button></a>
-            </div>
-        </div>
+        <h5 class="display-4">Subtotal: $<?php echo number_format($subtotal); ?></h5>
     </div>
 
 </body>
