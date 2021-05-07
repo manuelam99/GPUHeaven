@@ -76,8 +76,8 @@ foreach ($fotos as $llave => $foto) {
         </ul>
         <div class="nav navbar-nav">
             <a href="./carrito.php">
-            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
-            <?php echo ($articulos>0) ? '<span class="badge badge-danger rounded-circle">'. $articulos .'</span>': '' ?>
+                <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+                <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
             </a>
         </div>
     </nav>
@@ -113,8 +113,12 @@ foreach ($fotos as $llave => $foto) {
                 <p>Precio: $<?php echo number_format($producto[4]) ?></p>
                 <p>Stock: <?php echo $producto[5] ?></p>
                 <div class="container d-flex justify-content-center">
-                    <button type="button" class="btn btn-outline-primary mx-4">Agregar a Carrito</button>
-                    <button type="button" class="btn btn-outline-success mx-4">Comprar Ahora</button>
+                        <form action="./agregarACarrito.php" method="post" class="mx-5">
+                            <button type="submit" name="prod" value="<?php echo $_POST['prod'] ?>" class="btn btn-outline-primary">Agregar a Carrito</button>
+                        </form>
+                        <form action="./checkoutIndiv.php" method="post" class="mx-5">
+                            <button type="submit" name="prod" value="<?php echo $_POST['prod'] ?>" class="btn btn-outline-success">Comprar Ahora</button>
+                        </form>
                 </div>
             </div>
         </div>

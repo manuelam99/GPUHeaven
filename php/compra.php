@@ -13,9 +13,15 @@ require_once "./coneccion.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    $sqlInsert = $_POST['sqlI'];
-    $sqlUpdate = $_POST['sqlU'];
-    $sqlLimpiar = "DELETE FROM carrito WHERE id_usuario = ".$id_usr. ";";
+    $sqlInsert = (empty($_POST['compraInd'])) ? $_POST['sqlI'] 
+                : "INSERT INTO transacciones (id_producto, id_usuario, cantidad, precio) 
+                   VALUES ({$_POST['compraInd'][0]}, {$id_usr}, 1, {$_POST['compraInd'][1]});";
+                
+    $sqlUpdate = (empty($_POST['compraInd'])) ? $_POST['sqlU'] 
+                : "UPDATE productos SET stock_producto = stock_producto - 1
+                   WHERE id_producto = {$_POST['compraInd'][0]}";
+
+    $sqlLimpiar = (empty($_POST['compraInd'])) ? "DELETE FROM carrito WHERE id_usuario = ".$id_usr. ";" : "";
 
     $sqlTodo = $sqlInsert.$sqlUpdate.$sqlLimpiar;
 

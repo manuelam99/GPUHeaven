@@ -3,10 +3,10 @@
 // Start the session
 session_start();
 
-/*if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: ./login.php");
     exit;
-}*/
+}
 
 ?>
 <html lang="en">
@@ -40,34 +40,20 @@ $result = mysqli_query($con, $query);
 
 $articulos = mysqli_num_rows($result);
 
-$contenidoCarrito = "";
-$subtotal = 0.0;
+$queryProd = "SELECT nom_producto, fotos_producto, prec_producto
+              FROM productos
+              WHERE id_producto = " . $_POST['prod'] . ";";
 
-while ($row = mysqli_fetch_array($result)) {
-    $dir = $row['ruta_f'] . '/';
-    $fotos = array_slice(scandir('../images/' . $dir), 2);
+$resultProd = mysqli_query($con, $queryProd);
 
-    $contenidoCarrito .= '<hr>';
-
-    $contenidoCarrito .= '<div class="row align-items-center justify-content-center">';
-    $contenidoCarrito .= '<div class="col-lg-4">';
-    $contenidoCarrito .= '<img src="../images/' . $dir . $fotos[0] . '" alt="Imagen" class="imagen-fluid">';
-    $contenidoCarrito .= '</div>';
-    $contenidoCarrito .= '<div class="col-lg-4">';
-    $contenidoCarrito .= '<h4>' . $row['nombre'] . '</h4>
-                          <p>$' . number_format($row['precio']) . '</p>
-                          <p>Unidades: ' . $row['cantidad'] . '</p>';
-    $contenidoCarrito .= '</div>';
-    $contenidoCarrito .= '<div class="col-lg-4">';
-    $contenidoCarrito .= '<button type="button" class="btn btn-danger">Eliminar</button>';
-    $contenidoCarrito .= '</div>';
-    $contenidoCarrito .= '</div>';
-
-    $contenidoCarrito .= '<hr>';
-    $subtotal += $row['precio']*$row['cantidad'];
-}
+$producto = mysqli_fetch_row($resultProd);
 
 mysqli_close($con);
+
+$dir = $producto[1] . '/';
+$fotos = array_slice(scandir('../images/' . $dir), 2);
+$subtotal = $producto[2];
+
 ?>
 
 <body>
@@ -93,15 +79,36 @@ mysqli_close($con);
         </ul>
         <div class="nav navbar-nav">
             <a href="./carrito.php">
-            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
-            <?php echo ($articulos>0) ? '<span class="badge badge-danger rounded-circle">'. $articulos .'</span>': '' ?>
+                <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+                <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
             </a>
         </div>
     </nav>
 
     <div class="container mt-3">
-        <?php echo (!empty($contenidoCarrito)) ? $contenidoCarrito : "<h2>Carrito Vacio</h2>"; ?>
-        <h5 class="display-4">Subtotal: $<?php echo number_format($subtotal); ?></h5>
+        <hr>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6">
+                <img src="../images/<?php echo $dir . $fotos[0] ?>" alt="Imagen" class="imagen-fluid">
+            </div>
+            <div class="col-lg-6">
+                <h4><?php echo $producto[0] ?></h4>
+                <p>$<?php echo number_format($producto[2]) ?></p>
+            </div>
+        </div>
+        <hr>
+        <div class="row align-items-center justify-content-center my-5">
+            <div class="col-lg-6">
+                <h5 class="display-4 text-center">Total: $<?php echo number_format($subtotal); ?></h5>
+            </div>
+            <div class="col-lg-6 text-center">
+                <form action="./compra.php" method="post">
+                    <input type="hidden" name="compraInd[]" value="<?php echo $_POST['prod'] ?>">
+                    <input type="hidden" name="compraInd[]" value="<?php echo $subtotal ?>">
+                    <button type="submit" class="btn btn-success">Confirmar Compra</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 </body>
