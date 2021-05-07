@@ -32,7 +32,7 @@ require_once "./coneccion.php";
 $id_usr = $_SESSION["id"];
 
 $query = "SELECT p.nom_producto AS nombre, p.prec_producto AS precio, c.cantidad_producto AS cantidad, 
-                                                p.fotos_producto AS ruta_f, p.stock_producto AS stock  
+                                                p.fotos_producto AS ruta_f, p.stock_producto AS stock, p.id_producto AS id_prod  
           FROM carrito c, productos p 
           WHERE p.id_producto = c.id_producto AND c.id_usuario = '" . $id_usr . "';";
 
@@ -59,7 +59,9 @@ while ($row = mysqli_fetch_array($result)) {
                           <p>Unidades: ' . $row['cantidad'] . '</p>';
     $contenidoCarrito .= '</div>';
     $contenidoCarrito .= '<div class="col-lg-4">';
-    $contenidoCarrito .= '<button type="button" class="btn btn-danger">Eliminar</button>';
+    $contenidoCarrito .= '<form action="./eliminarDeCarrito.php" method="post">';
+    $contenidoCarrito .= '<button type="submit" name="elim" value="'.$row['id_prod'].'" class="btn btn-danger">Eliminar</button>';
+    $contenidoCarrito .= '</form>';
     $contenidoCarrito .= '</div>';
     $contenidoCarrito .= '</div>';
 
