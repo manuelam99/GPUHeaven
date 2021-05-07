@@ -35,6 +35,8 @@ $result = mysqli_query($con, $query);
 
 $producto = mysqli_fetch_row($result);
 
+$stock = $producto[5];
+
 mysqli_close($con);
 
 $dir = $producto[3] . '/';
@@ -114,10 +116,10 @@ foreach ($fotos as $llave => $foto) {
                 <p>Stock: <?php echo $producto[5] ?></p>
                 <div class="container d-flex justify-content-center">
                         <form action="./agregarACarrito.php" method="post" class="mx-5">
-                            <button type="submit" name="prod" value="<?php echo $_POST['prod'] ?>" class="btn btn-outline-primary">Agregar a Carrito</button>
+                            <button type="submit" name="prod" value="<?php echo $_POST['prod'] ?>" class="btn btn-outline-primary" <?php echo ($stock < 1) ? "disabled" : "" ?>>Agregar a Carrito</button>
                         </form>
                         <form action="./checkoutIndiv.php" method="post" class="mx-5">
-                            <button type="submit" name="prod" value="<?php echo $_POST['prod'] ?>" class="btn btn-outline-success">Comprar Ahora</button>
+                            <button type="submit" name="prod" value="<?php echo $_POST['prod'] ?>" class="btn btn-outline-success" <?php echo ($stock < 1) ? "disabled" : "" ?>>Comprar Ahora</button>
                         </form>
                 </div>
             </div>
