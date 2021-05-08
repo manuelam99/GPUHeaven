@@ -8,6 +8,10 @@
     display: block;
 }
 
+button:disabled{
+    cursor: not-allowed;
+}
+
 .icono{
     width: 50px;
     height: auto;

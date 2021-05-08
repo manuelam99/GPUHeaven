@@ -51,7 +51,7 @@ $resultQueryCompras = mysqli_query($con, $queryCompras);
 
 $compras = "";
 while ($row = mysqli_fetch_array($resultQueryCompras)) {
-    $precio = '$'.number_format($row['precio']);
+    $precio = '$' . number_format($row['precio']);
     $compras .= "<tr>";
     $compras .= "<td>{$row['pNombre']}</td>";
     $compras .= "<td>{$row['cantidad']}</td>";
