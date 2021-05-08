@@ -23,7 +23,7 @@ $queryCompras = "SELECT u.username as user, p.nom_producto as producto, t.cantid
                  WHERE t.id_producto = p.id_producto
                  AND t.id_usuario = u.id_usuario;";
 
-$queryProds = "SELECT nom_producto, prec_producto, stock_producto, fab_producto, org_producto
+$queryProds = "SELECT id_producto, nom_producto, prec_producto, stock_producto, fab_producto, org_producto
                FROM productos;";
 
 $resultQueryCompras = mysqli_query($con, $queryCompras);
@@ -38,6 +38,7 @@ while ($row = mysqli_fetch_array($resultQueryProds)) {
     $productos .= "<td>{$row['stock_producto']}</td>";
     $productos .= "<td>{$row['fab_producto']}</td>";
     $productos .= "<td>{$row['org_producto']}</td>";
+    $productos .= '<td><a href="./modifProd.php?prod='.$row['id_producto'].'"><button type="button" class="btn btn-warning">Modificar</button></a></td>';
     $productos .= "</tr>";
 }
 
@@ -58,9 +59,9 @@ mysqli_close($con);
 
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand"><span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUH</a>
+        <a class="navbar-brand"><span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUHA</a>
     </nav>
-    <ul class="nav nav-tabs justify-content-center  my-5">
+    <ul class="nav nav-tabs justify-content-center my-5">
         <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#prods">Productos</a>
         </li>
@@ -72,7 +73,7 @@ mysqli_close($con);
     <div class="tab-content">
         <div class="tab-pane container active mt-4" id="prods">
             <div class="container" style="max-height: 638px; overflow-y:scroll">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover table-responsive-md">
                     <thead>
                         <tr>
                             <th>Producto</th>
@@ -87,10 +88,13 @@ mysqli_close($con);
                     </tbody>
                 </table>
             </div>
+            <div class="container my-5">
+                <a href="#"><button type="button" class="btn btn-primary">Agregar Producto</button></a>
+            </div>
         </div>
         <div class="tab-pane container fade mt-4" id="compras">
             <div class="container" style="max-height: 638px; overflow-y:scroll">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover table-responsive-md">
                     <thead>
                         <tr>
                             <th>Usuario</th>
