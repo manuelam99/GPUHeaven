@@ -60,6 +60,11 @@ mysqli_close($con);
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <a class="navbar-brand"><span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUHA</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">Ir a Tienda</a>
+            </li>
+        </ul>
     </nav>
     <ul class="nav nav-tabs justify-content-center my-5">
         <li class="nav-item">
@@ -89,7 +94,7 @@ mysqli_close($con);
                 </table>
             </div>
             <div class="container my-5">
-                <a href="#"><button type="button" class="btn btn-primary">Agregar Producto</button></a>
+                <a href="./agregProd.php"><button type="button" class="btn btn-primary">Agregar Producto</button></a>
             </div>
         </div>
         <div class="tab-pane container fade mt-4" id="compras">
