@@ -26,6 +26,7 @@ $resultQueryProd = mysqli_query($con, $queryProd);
 
 $producto = mysqli_fetch_row($resultQueryProd);
 
+$id = $producto[0];
 $nombreProd = $producto[1];
 $descProd = $producto[2];
 $fotosProd = $producto[3];
@@ -38,6 +39,99 @@ $reg_error = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (!preg_match("/^[0-9a-zA-Z ]*$/", $_POST["nom"])) {
+        $nombreProdErr = "Solo se permiten letras, numeros y espacios en blanco";
+    } elseif (empty($_POST["nom"])) {
+        $nombreProdErr = "Favor de ingresar nombre";
+    } else {
+        $nombreProd = $_POST['nom'];
+    }
+
+    if (empty(test_input($_POST["desc"]))) {
+        $descProdErr = "Favor de ingresar descripcion";
+    } else {
+        $descProd = test_input($_POST["desc"]);
+    }
+
+    if (empty(test_input($_POST["fotos"]))) {
+        $fotosProdErr = "Favor de ingresar ruta a carpeta de fotos";
+    } else {
+        $fotosProd = test_input($_POST["fotos"]);
+    }
+
+    if (empty($_POST["prec"]) or $_POST["prec"] < 0) {
+        $precProdErr = "Favor de ingresar valor mayor o igual a 0";
+    } else {
+        $precProd = $_POST["prec"];
+    }
+
+    if (empty($_POST["stock"]) || $_POST["stock"] < 0) {
+        $stockProdErr = "Favor de ingresar valor mayor o igual a 0";
+    } else {
+        $stockProd = $_POST["stock"];
+    }
+
+    if (empty(test_input($_POST["fab"]))) {
+        $fabProdErr = "Favor de ingresar fabricante";
+    } else {
+        $fabProd = test_input($_POST["fab"]);
+    }
+
+    if (empty(test_input($_POST["org"]))) {
+        $orgProdErr = "Favor de ingresar origen";
+    } else {
+        $orgProd = test_input($_POST["org"]);
+    }
+
+    $id = $_POST['id_prod'];
+
+    $bandera = empty($nombreProdErr) && empty($descProdErr) && empty($precProdErr) &&
+        empty($stockProdErr) && empty($fabProdErr) && empty($orgProdErr) &&
+        empty($fotosProdErr);
+
+    if ($bandera) {
+        $update = "UPDATE productos
+                   SET nom_producto=?, desc_producto=?, fotos_producto=?, 
+                   prec_producto=?, stock_producto=?, fab_producto=?, org_producto=?
+                   WHERE id_producto = {$id};";
+
+        if ($stmt = mysqli_prepare($con, $update)) {
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param(
+                $stmt,
+                "sssdiss",
+                $paramNombre,
+                $paramDesc,
+                $paramFotos,
+                $paramPrec,
+                $paramStock,
+                $paramFab,
+                $paramOrg
+            );
+
+            // Set parameters
+            $paramNombre = $nombreProd;
+            $paramDesc = $descProd;
+            $paramFotos = $fotosProd;
+            $paramPrec = $precProd;
+            $paramStock = $stockProd;
+            $paramFab = $fabProd;
+            $paramOrg = $orgProd;
+
+            // Attempt to execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                // Redirect to admin page
+                header("location: ./index.php");
+            } else {
+                $reg_error = "Hubo un error en el update";
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
 }
 
 mysqli_close($con);
@@ -86,9 +180,9 @@ function test_input($data)
                 </div>
                 <div class="form-group">
                     <label for="fab">Fabricante:</label>
-                    <select class="form-control <?php echo (!empty($fabProdErr)) ? 'is-invalid' : ''; ?>" required>
-                        <option selected value="NVIDIA">NVIDIA</option>
-                        <option value="AMD">AMD</option>
+                    <select name="fab" class="form-control <?php echo (!empty($fabProdErr)) ? 'is-invalid' : ''; ?>" required>
+                        <option value="NVIDIA" <?php echo ($fabProd == "NVIDIA") ? "selected" : "" ?>>NVIDIA</option>
+                        <option value="AMD" <?php echo ($fabProd == "AMD") ? "selected" : "" ?>>AMD</option>
                     </select>
                     <div class="invalid-feedback"><?php echo $fabProdErr; ?></div>
                 </div>
@@ -97,6 +191,7 @@ function test_input($data)
                     <input type="text" class="form-control <?php echo (!empty($orgProdErr)) ? 'is-invalid' : ''; ?>" id="tarjeta" name="org" value="<?php echo $orgProd; ?>" required>
                     <div class="invalid-feedback"><?php echo $orgProdErr; ?></div>
                 </div>
+                <input type="hidden" name="id_prod" value="<?php echo $id ?>">
                 <button type="submit" class="btn btn-success">Guardar Cambios</button>
                 <?php
                 if (!empty($reg_error)) {
