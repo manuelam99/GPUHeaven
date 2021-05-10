@@ -103,10 +103,10 @@ mysqli_close($con);
         </div>
     </div>
     <div class="container-fluid my-5">
-        <div class="container">
+        <div class="container d-flex justify-content-around">
 
-            <a href="#" style="text-decoration: none;">
-                <div class="card">
+            <a href="./php/login.php" style="text-decoration: none;">
+                <div class="card" style="border: none;">
                     <i class="fas fa-sign-in-alt fa-10x text-center"></i>
                     <div class="card-body">
                         <h4 class="card-title text-center">¿Ya tienes cuenta?</h4>
@@ -115,8 +115,8 @@ mysqli_close($con);
                 </div>
             </a>
 
-            <a href="#" style="text-decoration: none;">
-                <div class="card">
+            <a href="./php/registro.php" style="text-decoration: none;">
+                <div class="card" style="border: none;">
                     <i class="fas fa-address-card fa-10x text-center"></i>
                     <div class="card-body">
                         <h4 class="card-title text-center">¿No tienes cuenta?</h4>
