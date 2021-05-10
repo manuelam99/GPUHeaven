@@ -19,7 +19,7 @@ session_start();
     <title>GPU Heaven</title>
 </head>
 
-<?php 
+<?php
 
 require_once "./php/coneccion.php";
 
@@ -55,13 +55,45 @@ mysqli_close($con);
         </ul>
         <div class="nav navbar-nav">
             <a href="./php/carrito.php">
-            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
-            <?php echo ($articulos>0) ? '<span class="badge badge-danger rounded-circle">'. $articulos .'</span>': '' ?>
+                <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
+                <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
             </a>
         </div>
     </nav>
-    <div class="jumbotron">
+    <div class="jumbotron mb-0">
         <h1 class="display-1 text-center">GPU Heaven, nosotros si tenemos stock</h1>
+    </div>
+
+    <div class="container-fluid my-0" style="height: 100vh;">
+        <div class="row h-100">
+            <div class="col-sm-12 col-md-6 col-lg-6 bg-success h-100 d-flex flex-column justify-content-center align-items-center">
+                <img src="./images/jensenHuang.jpg" alt="Imagen" class="img-fluid rounded-circle mb-3" style="max-width: 50%">
+                <i style="max-width: 75%;">
+                    <h5>"No existe mejor proveedor que GPU Heaven. Estamos orgullosos de tener una tán cercana alianza con ellos.
+                         En ningún otro lugar encontrarás el mismo calibre de servicio y atención, y mucho menos, mejores precios."</h5>
+                </i>
+                <h4>-Jensen Huang, CEO de NVIDIA Corporation</h4>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 h-100">
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid my-0" style="height: 100vh;">
+        <div class="row h-100">
+            <div class="col-sm-12 col-md-6 col-lg-6 h-100">
+
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 h-100 bg-danger d-flex flex-column justify-content-center align-items-center">
+                <img src="./images/lisaSu.jpg" alt="Imagen" class="img-fluid rounded-circle mb-3" style="max-width: 50%">
+                <i style="max-width: 75%;">
+                    <h5>"En todos mis años trabajando para AMD, nunca me había ecnontrado con un proveedor tán enfocado 
+                         en la buena experiencia del cliente. 
+                         Si lo que quieres es un servicio incomparable (a los mejores precios), no dudes comprar en GPU Heaven."</h5>
+                </i>
+                <h4>-Dra. Lisa Su, CEO de AMD Inc.</h4>
+            </div>
+        </div>
     </div>
 
 </body>
