@@ -64,34 +64,36 @@ mysqli_close($con);
         <h1 class="display-1 text-center">GPU Heaven, nosotros si tenemos stock</h1>
     </div>
 
-    <div class="container-fluid my-0" style="height: 100vh;">
+    <div class="container-fluid my-0" style="height: 100vh; min-height: 100vh;" id="bgNVIDIA">
         <div class="row h-100">
-            <div class="col-sm-12 col-md-6 col-lg-6 bg-success h-100 d-flex flex-column justify-content-center align-items-center">
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
                 <img src="./images/jensenHuang.jpg" alt="Imagen" class="img-fluid rounded-circle mb-3" style="max-width: 50%">
                 <i style="max-width: 75%;">
-                    <h5>"No existe mejor proveedor que GPU Heaven. Estamos orgullosos de tener una tán cercana alianza con ellos.
-                         En ningún otro lugar encontrarás el mismo calibre de servicio y atención, y mucho menos, mejores precios."</h5>
+                    <h5 class="text-white">"No existe mejor proveedor que GPU Heaven. Estamos orgullosos de tener una tán cercana alianza con ellos.
+                        En ningún otro lugar encontrarás el mismo calibre de servicio y atención, y mucho menos, mejores precios."</h5>
                 </i>
-                <h4>-Jensen Huang, CEO de NVIDIA Corporation</h4>
+                <h4 class="text-white">-Jensen Huang, CEO de NVIDIA Corporation</h4>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 h-100">
-
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
+                <h3 class="text-white">Impulsa tu rendimiento con NVIDIA</h3>
+                <a href="./php/tienda.php"><button type="button" class="btn btn-dark">Visita la Tienda</button></a>
             </div>
         </div>
     </div>
-    <div class="container-fluid my-0" style="height: 100vh;">
+    <div class="container-fluid my-0" style="height: 100vh; min-height: 100vh;" id="bgAMD">
         <div class="row h-100">
-            <div class="col-sm-12 col-md-6 col-lg-6 h-100">
-
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
+                <h3 class="text-white">Domina el campo de batalla con AMD</h3>
+                <a href="./php/tienda.php"><button type="button" class="btn btn-dark">Visita la Tienda</button></a>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 h-100 bg-danger d-flex flex-column justify-content-center align-items-center">
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
                 <img src="./images/lisaSu.jpg" alt="Imagen" class="img-fluid rounded-circle mb-3" style="max-width: 50%">
                 <i style="max-width: 75%;">
-                    <h5>"En todos mis años trabajando para AMD, nunca me había ecnontrado con un proveedor tán enfocado 
-                         en la buena experiencia del cliente. 
-                         Si lo que quieres es un servicio incomparable (a los mejores precios), no dudes comprar en GPU Heaven."</h5>
+                    <h5 class="text-white">"En todos mis años trabajando para AMD, nunca me había encontrado con un proveedor tán enfocado
+                        en la buena experiencia del cliente.
+                        Si lo que quieres es un servicio incomparable (a los mejores precios), no dudes comprar en GPU Heaven."</h5>
                 </i>
-                <h4>-Dra. Lisa Su, CEO de AMD Inc.</h4>
+                <h4 class="text-white">-Dra. Lisa Su, CEO de AMD Inc.</h4>
             </div>
         </div>
     </div>

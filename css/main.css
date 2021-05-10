@@ -30,3 +30,13 @@ button:disabled{
     background-color: #fff;
     background-color: rgba(70, 70, 70, 0.25);
 }
+
+#bgNVIDIA{
+    background: url("../images/nvidiaWallpaper-2.png") no-repeat center;
+    background-size: cover;
+}
+
+#bgAMD{
+    background: url("../images/amdWallpaper-1.jpg") no-repeat center;
+    background-size: cover;
+}
