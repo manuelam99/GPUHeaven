@@ -107,9 +107,11 @@ mysqli_close($con);
             <div class="col-lg-6">
                 <h5 class="display-4 text-center">Subotal: $<?php echo number_format($subtotal); ?></h5>
             </div>
-            <div class="col-lg-6 text-center">
+            <?php echo (!empty($contenidoCarrito)) ?
+            '<div class="col-lg-6 text-center">
                     <a href="./checkoutCarrito.php"><button type="button" class="btn btn-success">Proceder a Checkout</button></a>
-            </div>
+            </div>' : '';
+            ?>
         </div>
     </div>
 

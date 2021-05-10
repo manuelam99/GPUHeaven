@@ -153,7 +153,7 @@ mysqli_close($con);
                 </form>
             </div>
             <div class="tab-pane container fade mt-4" id="compras">
-                <div class="container">
+                <div class="container" style="max-height: 638px; overflow-y:scroll">
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
