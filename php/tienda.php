@@ -15,7 +15,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/main.css">
-    <link href="../open-iconic-master/open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>GPU Heaven</title>
 </head>
 
@@ -79,10 +79,10 @@ while ($row = mysqli_fetch_array($result)) {
     $cardsTodo .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
     $cardsTodo .= '<div class="row">';
     $cardsTodo .= '<form action="./agregarACarrito.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
-    $cardsTodo .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100" '.$stock.'>Carrito</button>';
+    $cardsTodo .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100" ' . $stock . '>Carrito</button>';
     $cardsTodo .= '</form>';
     $cardsTodo .= '<form action="./checkoutIndiv.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
-    $cardsTodo .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-success w-100" '.$stock.'>Comprar</button>';
+    $cardsTodo .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-success w-100" ' . $stock . '>Comprar</button>';
     $cardsTodo .= '</form>';
     $cardsTodo .= '<form action="./producto.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
     $cardsTodo .= '<button type="submit" name="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-info w-100">Ver Mas</button>';
@@ -129,10 +129,10 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsNVIDIA .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
         $cardsNVIDIA .= '<div class="row">';
         $cardsNVIDIA .= '<form action="./agregarACarrito.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
-        $cardsNVIDIA .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100" '.$stock.'>Carrito</button>';
+        $cardsNVIDIA .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100" ' . $stock . '>Carrito</button>';
         $cardsNVIDIA .= '</form>';
         $cardsNVIDIA .= '<form action="./checkoutIndiv.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
-        $cardsNVIDIA .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-success w-100" '.$stock.'>Comprar</button>';
+        $cardsNVIDIA .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-success w-100" ' . $stock . '>Comprar</button>';
         $cardsNVIDIA .= '</form>';
         $cardsNVIDIA .= '<form action="./producto.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
         $cardsNVIDIA .= '<button type="submit" name="prod" value="' . $row['id_producto'] . '" ' . 'class="btn btn-outline-info w-100">Ver Mas</button>';
@@ -179,10 +179,10 @@ while ($row = mysqli_fetch_array($result)) {
         $cardsAMD .= '<p class="card-text">' . 'Precio: $' . number_format($row['prec_producto']) . '</p>';
         $cardsAMD .= '<div class="row">';
         $cardsAMD .= '<form action="./agregarACarrito.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
-        $cardsAMD .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100" '.$stock.'>Carrito</button>';
+        $cardsAMD .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-primary w-100" ' . $stock . '>Carrito</button>';
         $cardsAMD .= '</form>';
         $cardsAMD .= '<form action="./checkoutIndiv.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
-        $cardsAMD .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-success w-100" '.$stock.'>Comprar</button>';
+        $cardsAMD .= '<button type="submit" name ="prod" value="' . $row['id_producto'] . '" class="btn btn-outline-success w-100" ' . $stock . '>Comprar</button>';
         $cardsAMD .= '</form>';
         $cardsAMD .= '<form action="./producto.php" method="post" class="col-lg-4 col-md-12 col-s-12 p-0">';
         $cardsAMD .= '<button type="submit" name="prod" value="' . $row['id_producto'] . '" ' . 'class="btn btn-outline-info w-100">Ver Mas</button>';
@@ -200,28 +200,33 @@ mysqli_close($con);
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
         <a class="navbar-brand" href="../index.php">
-            <span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUH
+        <i class="fas fa-desktop mr-1"></i>GPUH
         </a>
-
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="../index.php">Inicio</a>
-            </li>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">Inicio</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="./tienda.php">Compra</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./tienda.php">Compra</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link " href="./usuario.php">Usuario</a>
-            </li>
-        </ul>
-        <div class="nav navbar-nav">
-            <a href="./carrito.php">
-            <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
-            <?php echo ($articulos>0) ? '<span class="badge badge-danger rounded-circle">'. $articulos .'</span>': '' ?>
-            </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="./usuario.php">Usuario</a>
+                </li>
+
+                <li class="nav-item d-flex align-items-center">
+                    <a href="./carrito.php">
+                        <i class="fas fa-shopping-cart text-white"></i>
+                        <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="jumbotron">

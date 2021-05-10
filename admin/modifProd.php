@@ -9,8 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link href="../open-iconic-master/open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Pagina de Admin</title>
 </head>
 
@@ -147,7 +147,7 @@ function test_input($data)
 
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand"><span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUHA</a>
+        <a class="navbar-brand"><i class="fas fa-desktop mr-1"></i>GPUHA</a>
     </nav>
     <div class="container d-flex justify-content-center">
         <div class="row w-75 my-5">

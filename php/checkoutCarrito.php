@@ -20,8 +20,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link href="../open-iconic-master/open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>GPU Heaven</title>
 </head>
 
@@ -65,7 +65,7 @@ while ($row = mysqli_fetch_array($result)) {
     $subtotal += $row['precio'] * $row['cantidad'];
 
     $sqlInsert .= "(" . $row['id_prod'] . ", " . $id_usr . ", " . $row['cantidad'] . ", " . $row['precio'] * $row['cantidad'] . "),";
-    $sqlUpdate .= "UPDATE productos SET stock_producto = stock_producto - ".$row['cantidad']." WHERE id_producto = ".$row['id_prod'].";";
+    $sqlUpdate .= "UPDATE productos SET stock_producto = stock_producto - " . $row['cantidad'] . " WHERE id_producto = " . $row['id_prod'] . ";";
 }
 
 $sqlInsert = rtrim($sqlInsert, ',');
@@ -79,28 +79,33 @@ mysqli_close($con);
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
         <a class="navbar-brand" href="../index.php">
-            <span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUH
+        <i class="fas fa-desktop mr-1"></i>GPUH
         </a>
-
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="../index.php">Inicio</a>
-            </li>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">Inicio</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="./tienda.php">Compra</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./tienda.php">Compra</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="./usuario.php">Usuario</a>
-            </li>
-        </ul>
-        <div class="nav navbar-nav">
-            <a href="./carrito.php">
-                <span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span>
-                <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
-            </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="./usuario.php">Usuario</a>
+                </li>
+
+                <li class="nav-item d-flex align-items-center">
+                    <a href="./carrito.php">
+                        <i class="fas fa-shopping-cart text-white"></i>
+                        <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -113,7 +118,7 @@ mysqli_close($con);
             <div class="col-lg-6 text-center">
                 <form action="./compra.php" method="post">
                     <input type="text" name="sqlU" class="d-none" value="<?php echo $sqlUpdate ?>" readonly>
-                    <button type="submit" class="btn btn-success" name="sqlI" value="<?php echo$sqlInsert ?>">Confirmar Compra</button>
+                    <button type="submit" class="btn btn-success" name="sqlI" value="<?php echo $sqlInsert ?>">Confirmar Compra</button>
                 </form>
             </div>
         </div>

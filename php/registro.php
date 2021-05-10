@@ -18,33 +18,33 @@ $username_err = $nombre_err = $password_err = $confirm_password_err = $correo_er
 $reg_error = "";
 
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     // Validate username
-    if(empty(test_input($_POST["uname"]))){
+    if (empty(test_input($_POST["uname"]))) {
         $username_err = "Favor de ingresar usuario";
-    }else{
+    } else {
         // Prepare a select statement
         $sql = "SELECT id_usuario FROM usuarios WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($con, $sql)){
+
+        if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
+
             // Set parameters
             $param_username = test_input($_POST["uname"]);
-            
+
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
+            if (mysqli_stmt_execute($stmt)) {
                 /* store result */
                 mysqli_stmt_store_result($stmt);
-                
-                if(mysqli_stmt_num_rows($stmt) == 1){
+
+                if (mysqli_stmt_num_rows($stmt) == 1) {
                     $username_err = "Usuario ya existe";
-                } else{
+                } else {
                     $username = test_input($_POST["uname"]);
                 }
-            }else{
+            } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
@@ -52,76 +52,85 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-    
+
     // Validate password
-    if(empty(test_input($_POST["pswd"]))){
-        $password_err = "Favor de ingresar contraseña";     
-    }elseif(strlen(test_input($_POST["pswd"])) < 6){
+    if (empty(test_input($_POST["pswd"]))) {
+        $password_err = "Favor de ingresar contraseña";
+    } elseif (strlen(test_input($_POST["pswd"])) < 6) {
         $password_err = "Favor de ingresar contraseña de al menos 6 caracteres";
-    } else{
+    } else {
         $password = test_input($_POST["pswd"]);
     }
-    
+
     // Validate confirm password
-    if(empty(test_input($_POST["pswd2"]))){
+    if (empty(test_input($_POST["pswd2"]))) {
         $confirm_password_err = "Favor de confirmar contraseña";
-    }else{
+    } else {
         $confirm_password = test_input($_POST["pswd2"]);
-        if(empty($password_err) && ($password != $confirm_password)){
+        if (empty($password_err) && ($password != $confirm_password)) {
             $confirm_password_err = "Contraseñas no son iguales";
         }
     }
 
-    if(!preg_match("/^[a-zA-Z ]*$/",$_POST["name"])){
+    if (!preg_match("/^[a-zA-Z ]*$/", $_POST["name"])) {
         $nombre_err = "Solo se permiten letras y espacios en blanco";
-    }else{
+    } else {
         $nombre = test_input($_POST["name"]);
     }
 
     //Validar correo
-    if(empty(test_input($_POST["correo"]))){
+    if (empty(test_input($_POST["correo"]))) {
         $correo_err = "Favor de ingresar correo";
-    }else{
+    } else {
         $correo = test_input($_POST["correo"]);
     }
 
     //Validar fecha
-    if(empty(test_input($_POST["fecha"]))){
+    if (empty(test_input($_POST["fecha"]))) {
         $fecha_err = "Favor de ingresar fecha de nacimiento";
-    }else{
+    } else {
         $fecha = test_input($_POST["fecha"]);
     }
 
     //Validar tarjeta
-    if(empty(test_input($_POST["tarjeta"]))){
+    if (empty(test_input($_POST["tarjeta"]))) {
         $tarjeta_err = "Favor de ingresar tarjeta";
-    }else{
+    } else {
         $tarjeta = test_input($_POST["tarjeta"]);
     }
 
     //Validar direccion
-    if(empty(test_input($_POST["direc"]))){
+    if (empty(test_input($_POST["direc"]))) {
         $direcc_err = "Favor de ingresar dirección";
-    }else{
+    } else {
         $direcc = test_input($_POST["direc"]);
     }
 
-    $bandera = empty($username_err) && empty($password_err) && empty($confirm_password_err) 
-                && empty($correo_err) && empty($fecha_err) && empty($tarjeta_err) 
-                && empty($direcc_err);
-    
+    $bandera = empty($username_err) && empty($password_err) && empty($confirm_password_err)
+        && empty($correo_err) && empty($fecha_err) && empty($tarjeta_err)
+        && empty($direcc_err);
+
     // Check input errors before inserting in database
-    if($bandera){
-        
+    if ($bandera) {
+
         // Prepare an insert statement
         $sql = "INSERT INTO usuarios (username, nom_usuario, email_usuario, pass_usuario, fecha_nac, tarj_usuario, direc_usuario) 
                             VALUES (?, ?, ?, ?, ?, ?, ?)";
-         
-        if($stmt = mysqli_prepare($con, $sql)){
+
+        if ($stmt = mysqli_prepare($con, $sql)) {
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssssss", $param_username, $param_nombre, $param_correo, $param_password, 
-                                                                $param_fecha, $param_tarj, $param_direcc);
-            
+            mysqli_stmt_bind_param(
+                $stmt,
+                "sssssss",
+                $param_username,
+                $param_nombre,
+                $param_correo,
+                $param_password,
+                $param_fecha,
+                $param_tarj,
+                $param_direcc
+            );
+
             // Set parameters
             $param_username = $username;
             $param_nombre = $nombre;
@@ -130,12 +139,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_fecha = $fecha;
             $param_tarj = $tarjeta;
             $param_direcc = $direcc;
-            
+
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
+            if (mysqli_stmt_execute($stmt)) {
                 // Redirect to login page
                 header("location: ./login.php");
-            } else{
+            } else {
                 $reg_error = "Hubo un error en el registro";
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -144,12 +153,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-    
+
     // Close connection
     mysqli_close($con);
 }
 
-function test_input($data) {
+function test_input($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -167,8 +177,8 @@ function test_input($data) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link href="../open-iconic-master/open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>GPU Heaven</title>
 </head>
 
@@ -176,25 +186,33 @@ function test_input($data) {
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
         <a class="navbar-brand" href="../index.php">
-            <span class="oi oi-monitor text-light mr-1" title="Cart" aria-hidden="true"></span>GPUH
+        <i class="fas fa-desktop mr-1"></i>GPUH
         </a>
-
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="../index.php">Inicio</a>
-            </li>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">Inicio</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="./tienda.php">Compra</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./tienda.php">Compra</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link " href="./usuario.php">Usuario</a>
-            </li>
-        </ul>
-        <div class="nav navbar-nav">
-            <a href="./carrito.php"><span class="oi oi-cart text-light" title="Cart" aria-hidden="true"></span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="./usuario.php">Usuario</a>
+                </li>
+
+                <li class="nav-item d-flex align-items-center">
+                    <a href="./carrito.php">
+                        <i class="fas fa-shopping-cart text-white"></i>
+                        <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="container d-flex justify-content-center">
