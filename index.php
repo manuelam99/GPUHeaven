@@ -16,6 +16,7 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="./open-iconic-master/open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>GPU Heaven</title>
 </head>
 
@@ -97,6 +98,47 @@ mysqli_close($con);
             </div>
         </div>
     </div>
+    <div class="container-fluid my-5">
+        <div class="container">
+
+            <a href="#" style="text-decoration: none;">
+                <div class="card">
+                    <i class="fas fa-sign-in-alt fa-10x text-center"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center">¿Ya tienes cuenta?</h4>
+                        <p class="card-text text-center">¡Inicia Sesión!</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" style="text-decoration: none;">
+                <div class="card">
+                    <i class="fas fa-address-card fa-10x text-center"></i>
+                    <div class="card-body">
+                        <h4 class="card-title text-center">¿No tienes cuenta?</h4>
+                        <p class="card-text text-center">¡Regístrate!</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <nav class="navbar bg-dark navbar-dark justify-content-center">
+        <ul class="navbar-nav">
+            <li class="nav-item text-center">
+                <a class="nav-link" href="#">Acerca de Nosotros</a>
+            </li>
+
+            <li class="nav-item text-center">
+                <a class="nav-link" href="#">Contacto</a>
+            </li>
+
+            <li class="nav-item text-center">
+                <a class="nav-link" href="./admin/index.php">Admin</a>
+            </li>
+        </ul>
+    </nav>
 
 </body>
 
