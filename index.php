@@ -74,13 +74,13 @@ mysqli_close($con);
             <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
                 <img src="./images/jensenHuang.jpg" alt="Imagen" class="img-fluid rounded-circle mb-3" style="max-width: 50%">
                 <i style="max-width: 75%;">
-                    <h5 class="text-white">"No existe mejor proveedor que GPU Heaven. Estamos orgullosos de tener una tán cercana alianza con ellos.
+                    <h5 class="text-white text-center" id="texto">"No existe mejor proveedor que GPU Heaven. Estamos orgullosos de tener una tán cercana alianza con ellos.
                         En ningún otro lugar encontrarás el mismo calibre de servicio y atención, y mucho menos, mejores precios."</h5>
                 </i>
-                <h4 class="text-white">-Jensen Huang, CEO de NVIDIA Corporation</h4>
+                <h4 class="text-white text-center" id="autor">-Jensen Huang, CEO de NVIDIA Corporation</h4>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
-                <h3 class="text-white">Impulsa tu rendimiento con NVIDIA</h3>
+                <h3 class="text-white text-center" id="linkT">Impulsa tu rendimiento con NVIDIA</h3>
                 <a href="./php/tienda.php"><button type="button" class="btn btn-dark">Visita la Tienda</button></a>
             </div>
         </div>
@@ -88,17 +88,17 @@ mysqli_close($con);
     <div class="container-fluid my-0" style="height: 100vh; min-height: 100vh;" id="bgAMD">
         <div class="row h-100">
             <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
-                <h3 class="text-white">Domina el campo de batalla con AMD</h3>
+                <h3 class="text-white text-center" id="linkT">Domina el campo de batalla con AMD</h3>
                 <a href="./php/tienda.php"><button type="button" class="btn btn-dark">Visita la Tienda</button></a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
                 <img src="./images/lisaSu.jpg" alt="Imagen" class="img-fluid rounded-circle mb-3" style="max-width: 50%">
                 <i style="max-width: 75%;">
-                    <h5 class="text-white">"En todos mis años trabajando para AMD, nunca me había encontrado con un proveedor tán enfocado
+                    <h5 class="text-white text-center" id="texto">"En todos mis años trabajando para AMD, nunca me había encontrado con un proveedor tán enfocado
                         en la buena experiencia del cliente.
                         Si lo que quieres es un servicio incomparable (a los mejores precios), no dudes comprar en GPU Heaven."</h5>
                 </i>
-                <h4 class="text-white">-Dra. Lisa Su, CEO de AMD Inc.</h4>
+                <h4 class="text-white text-center" id="autor">-Dra. Lisa Su, CEO de AMD Inc.</h4>
             </div>
         </div>
     </div>
@@ -107,7 +107,7 @@ mysqli_close($con);
 
             <a href="./php/login.php" style="text-decoration: none;">
                 <div class="card" style="border: none;">
-                    <i class="fas fa-sign-in-alt fa-10x text-center"></i>
+                    <i class="fas fa-sign-in-alt text-center"></i>
                     <div class="card-body">
                         <h4 class="card-title text-center">¿Ya tienes cuenta?</h4>
                         <p class="card-text text-center">¡Inicia Sesión!</p>
@@ -117,7 +117,7 @@ mysqli_close($con);
 
             <a href="./php/registro.php" style="text-decoration: none;">
                 <div class="card" style="border: none;">
-                    <i class="fas fa-address-card fa-10x text-center"></i>
+                    <i class="fas fa-address-card text-center"></i>
                     <div class="card-body">
                         <h4 class="card-title text-center">¿No tienes cuenta?</h4>
                         <p class="card-text text-center">¡Regístrate!</p>

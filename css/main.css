@@ -40,3 +40,63 @@ button:disabled{
     background: url("../images/amdWallpaper-1.jpg") no-repeat center;
     background-size: cover;
 }
+
+.fa-sign-in-alt{
+    font-size: 9vw;
+}
+.fa-address-card{
+    font-size: 9vw;
+}
+
+.card-body h4,p{
+    font-size: 2vw;
+}
+@media screen and (max-width: 550px) {
+    .card-body h4,p{
+        font-size: 3vw;
+    }
+}
+@media screen and (max-width: 350px) {
+    .card-body h4,p{
+        font-size: 4vw;
+    }
+    .fa-sign-in-alt{
+        font-size: 10vw;
+    }
+    .fa-address-card{
+        font-size: 10vw;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .jumbotron .display-1 {
+      font-size: 5rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .jumbotron .display-1 {
+      font-size: 4rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .jumbotron .display-1 {
+      font-size: 3rem;
+    }
+}
+@media screen and (max-width: 400px) {
+    .jumbotron .display-1 {
+      font-size: 2rem;
+    }
+}
+
+@media screen and (max-height: 654px) {
+    #texto{
+        font-size: 0.75rem;
+    }
+    #autor{
+        font-size: 1rem;
+    }
+    #linkT{
+        font-size: 1.25rem;
+    }
+}
