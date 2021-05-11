@@ -60,13 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fotosProd = test_input($_POST["fotos"]);
     }
 
-    if (empty($_POST["prec"]) or $_POST["prec"] < 0) {
+    if ($_POST["prec"] === "" or $_POST["prec"] < 0) {
         $precProdErr = "Favor de ingresar valor mayor o igual a 0";
     } else {
         $precProd = $_POST["prec"];
     }
 
-    if (empty($_POST["stock"]) || $_POST["stock"] < 0) {
+    if ($_POST["stock"] === "" || $_POST["stock"] < 0) {
         $stockProdErr = "Favor de ingresar valor mayor o igual a 0";
     } else {
         $stockProd = $_POST["stock"];
