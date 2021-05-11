@@ -83,6 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $correo_err = "Favor de ingresar correo";
     } else {
         $correo = test_input($_POST["correo"]);
+        if (!filter_var($correo,FILTER_VALIDATE_EMAIL)) {
+            $correo_err = "Favor de introducir correo valido";
+        }
     }
 
     //Validar fecha
@@ -97,6 +100,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $tarjeta_err = "Favor de ingresar tarjeta";
     } else {
         $tarjeta = test_input($_POST["tarjeta"]);
+        if (!preg_match("/^[0-9]*$/",$tarjeta)) {
+            $tarjeta_err = "Solo se permiten numeros";
+        }
     }
 
     //Validar direccion
