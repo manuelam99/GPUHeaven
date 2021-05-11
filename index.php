@@ -36,7 +36,7 @@ mysqli_close($con);
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
         <a class="navbar-brand" href="./index.php">
-        <i class="fas fa-desktop mr-1"></i>GPUH
+            <i class="fas fa-desktop mr-1"></i>GPUH
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,7 @@ mysqli_close($con);
 
                 <li class="nav-item d-flex align-items-center">
                     <a href="./php/carrito.php">
-                    <i class="fas fa-shopping-cart text-white"></i>
+                        <i class="fas fa-shopping-cart text-white"></i>
                         <?php echo ($articulos > 0) ? '<span class="badge badge-danger rounded-circle">' . $articulos . '</span>' : '' ?>
                     </a>
                 </li>
@@ -131,11 +131,11 @@ mysqli_close($con);
     <nav class="navbar bg-dark navbar-dark justify-content-center">
         <ul class="navbar-nav">
             <li class="nav-item text-center">
-                <a class="nav-link" href="#">Acerca de Nosotros</a>
+                <a class="nav-link" data-toggle="modal" data-target="#modalAcerca" style="cursor: pointer;">About Us</a>
             </li>
 
             <li class="nav-item text-center">
-                <a class="nav-link" href="#">Contacto</a>
+                <a class="nav-link" data-toggle="modal" data-target="#modalContacto" style="cursor: pointer;">Contacto</a>
             </li>
 
             <li class="nav-item text-center">
@@ -143,6 +143,80 @@ mysqli_close($con);
             </li>
         </ul>
     </nav>
+
+    <div class="modal fade" id="modalAcerca">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">About Us</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5>Quienes somos</h5>
+                    <p>Empresa 100% Mexicana. Fundada en 2021 por Manuel Álvarez Macías, GPU Heaven
+                        se dedica principalmente a la venta y distribuición de GPUs (Graphics Processing Unit)
+                        con el fín de proporcionarle a los verdaderos "gamers" una tienda en la cual pueden
+                        confiar el 100% de las veces. Contamos con un convenio especial tánto con NVIDIA
+                        como con AMD para asegurarles a nuestros clientes la máxima disponibilidad y los mejores
+                        precios en todo momento.</p>
+                    <h5>Nuestra Misión</h5>
+                    <p>Contar con la mejor disponibilidad y los mejores precios para brindarle a nuestros clientes
+                        la mejor experiencia de compra en el mercado de las GPUs.</p>
+                    <h5>Nuestra Visión</h5>
+                    <p>Llegar a ser una empresa líder a nível mundial en él ámbito de los componentes de
+                        cómputo, no únicamente GPUs, para brindarles a nuestros clientes un lugar en el que
+                        siempre puedan confiar.</p>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalContacto">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Contáctanos</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5>Correo:</h5>
+                    <p>custSupport@gpuh.com.mx</p>
+                    <h5>Teléfono:</h5>
+                    <p>+52 55 4957 4954</p>
+                    <h5>Horario de Servicio</h5>
+                    <p>Lunes a Viernes de 8:00 AM a 8:00 PM</p>
+                    <p>Fines de semana y días festivos de 10:00 AM a 5:00 PM</p>
+                    <h5>¡Déjanos un comentario!</h5>
+                    <form action="./php/dejarComentario.php" method="post">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" id="comment" name="comentario"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Dejar Comentario</button>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>
 
