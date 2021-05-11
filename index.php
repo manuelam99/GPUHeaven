@@ -109,8 +109,8 @@ mysqli_close($con);
                 <div class="card" style="border: none;">
                     <i class="fas fa-sign-in-alt text-center"></i>
                     <div class="card-body">
-                        <h4 class="card-title text-center">¿Ya tienes cuenta?</h4>
-                        <p class="card-text text-center">¡Inicia Sesión!</p>
+                        <h4 class="card-title text-center" id="cuenta">¿Ya tienes cuenta?</h4>
+                        <p class="card-text text-center" id="cuenta">¡Inicia Sesión!</p>
                     </div>
                 </div>
             </a>
@@ -119,8 +119,8 @@ mysqli_close($con);
                 <div class="card" style="border: none;">
                     <i class="fas fa-address-card text-center"></i>
                     <div class="card-body">
-                        <h4 class="card-title text-center">¿No tienes cuenta?</h4>
-                        <p class="card-text text-center">¡Regístrate!</p>
+                        <h4 class="card-title text-center" id="cuenta">¿No tienes cuenta?</h4>
+                        <p class="card-text text-center" id="cuenta">¡Regístrate!</p>
                     </div>
                 </div>
             </a>

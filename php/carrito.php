@@ -42,6 +42,8 @@ $articulos = mysqli_num_rows($result);
 
 $contenidoCarrito = "";
 $subtotal = 0.0;
+$sinStock = "";
+$disabled = "";
 
 while ($row = mysqli_fetch_array($result)) {
     $dir = $row['ruta_f'] . '/';
@@ -67,6 +69,11 @@ while ($row = mysqli_fetch_array($result)) {
 
     $contenidoCarrito .= '<hr>';
     $subtotal += $row['precio'] * $row['cantidad'];
+
+    if($row['stock'] < 1){
+        $sinStock .= "Lo sentimos, el articulo {$row['nombre']} ya no cuenta con stock, favor de eliminarlo\n";
+        $disabled = "disabled";
+    }
 }
 
 mysqli_close($con);
@@ -114,10 +121,18 @@ mysqli_close($con);
             </div>
             <?php echo (!empty($contenidoCarrito)) ?
                 '<div class="col-lg-6 text-center">
-                    <a href="./checkoutCarrito.php"><button type="button" class="btn btn-success">Proceder a Checkout</button></a>
+                    <a href="./checkoutCarrito.php"><button type="button" class="btn btn-success" '.$disabled.'>Proceder a Checkout</button></a>
             </div>' : '';
             ?>
         </div>
+        <?php echo (!empty($sinStock)) ?
+            '<div class="alert alert-danger alert-dismissible fade show my-3">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                '.$sinStock.'
+            </div>
+            '
+            :'';
+        ?>
     </div>
 
 </body>
