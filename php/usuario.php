@@ -27,7 +27,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 <?php
 
 $name = $uname = $correo = $fecha = $tarj = $direcc = "";
-$correoErr = $fechaErr = $tarjErr = $direccErr = "";
+$correoErr = $fechaErr = $tarjErr = $direccErr = $reg_error = "";
 
 require_once "./coneccion.php";
 
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_fecha = $fecha;
             $param_tarj = $tarj;
             $param_direc = $direcc;
-           
+
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
@@ -211,7 +211,8 @@ function test_input($data)
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Correo</span>
                             </div>
-                            <input type="email" name="correo" id="correo" class="form-control" value="<?php echo $correo ?>" disabled>
+                            <input type="email" name="correo" id="correo" class="form-control <?php echo (!empty($correoErr)) ? 'is-invalid' : ''; ?>" value="<?php echo $correo ?>" disabled>
+                            <div class="invalid-feedback"><?php echo $correoErr; ?></div>
                         </div>
                     </div>
 
@@ -220,7 +221,8 @@ function test_input($data)
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Fecha</span>
                             </div>
-                            <input type="date" name="fecha" id="fecha" class="form-control" value="<?php echo $fecha ?>" disabled>
+                            <input type="date" name="fecha" id="fecha" class="form-control <?php echo (!empty($fechaErr)) ? 'is-invalid' : ''; ?>" value="<?php echo $fecha ?>" disabled>
+                            <div class="invalid-feedback"><?php echo $fechaErr; ?></div>
                         </div>
                     </div>
 
@@ -229,7 +231,8 @@ function test_input($data)
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Tarjeta</span>
                             </div>
-                            <input type="text" name="tarj" id="tarj" class="form-control" value="<?php echo $tarj ?>" disabled>
+                            <input type="text" name="tarj" id="tarj" class="form-control <?php echo (!empty($tarjErr)) ? 'is-invalid' : ''; ?>" value="<?php echo $tarj ?>" disabled>
+                            <div class="invalid-feedback"><?php echo $tarjErr; ?></div>
                         </div>
                     </div>
 
@@ -238,12 +241,22 @@ function test_input($data)
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Dirección</span>
                             </div>
-                            <input type="text" name="direc" id="direc" class="form-control" value="<?php echo $direcc ?>" disabled>
+                            <input type="text" name="direc" id="direc" class="form-control <?php echo (!empty($direccErr)) ? 'is-invalid' : ''; ?>" value="<?php echo $direcc ?>" disabled>
+                            <div class="invalid-feedback"><?php echo $direccErr; ?></div>
                         </div>
                     </div>
 
                     <button class="btn btn-warning" id="modif">Modificar</button>
                     <button class="btn btn-success" type="submit" id="save" disabled>Guardar Cambios</button>
+
+                    <?php
+                    if (!empty($reg_error)) {
+                        echo '<div class="alert alert-danger alert-dismissible fade show my-3">';
+                        echo '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+                        echo  $reg_error;
+                        echo '</div>';
+                    }
+                    ?>
                 </form>
             </div>
             <div class="tab-pane container fade mt-4" id="compras">
