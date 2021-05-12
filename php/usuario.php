@@ -7,6 +7,15 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: ./login.php");
     exit;
 }
+$exito = "";
+
+if (isset($_SESSION["compra"]) && $_SESSION["compra"] === true) {
+    $exito = '<div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Compra exitosa!</strong>
+              </div>';
+    $_SESSION['compra'] = false;
+}
 ?>
 <html lang="en">
 
@@ -188,6 +197,7 @@ function test_input($data)
     </nav>
 
     <div class="container mt-3">
+        <?php echo (!empty($exito)) ? $exito : '' ?>
         <h2>Nombre: <?php echo (empty($name)) ? "Anónimo" : htmlspecialchars($name); ?></h2>
         <h3>Username: <?php echo $uname ?></h3>
         <a href="./logout.php"><button type="button" class="btn btn-danger">Logout</button></a>

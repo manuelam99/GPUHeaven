@@ -29,6 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die('Error: ' . mysqli_error($con));
     }
     
+    $_SESSION['compra'] = true;
+
     mysqli_close($con);
 }
 
