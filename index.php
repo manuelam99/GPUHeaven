@@ -2,6 +2,17 @@
 <?php
 // Start the session
 session_start();
+
+$exito = "";
+if (isset($_SESSION["nuevoLogin"]) && $_SESSION["nuevoLogin"] === true) {
+    $exito .= '<div class="container">';
+    $exito .= '<div class="alert alert-success alert-dismissible my-5 fixed-top">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Welcome '.$_SESSION["username"].'!</strong>
+              </div>';
+    $exito .= '</div>';
+    $_SESSION["nuevoLogin"] = false;
+}
 ?>
 <html lang="en">
 
@@ -33,6 +44,7 @@ mysqli_close($con);
 ?>
 
 <body>
+    <?php echo $exito ?>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
         <a class="navbar-brand" href="./index.php">
