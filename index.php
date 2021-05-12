@@ -6,9 +6,9 @@ session_start();
 $exito = "";
 if (isset($_SESSION["nuevoLogin"]) && $_SESSION["nuevoLogin"] === true) {
     $exito .= '<div class="container">';
-    $exito .= '<div class="alert alert-success alert-dismissible my-5 fixed-top">
+    $exito .= '<div class="alert alert-success alert-dismissible my-5 fixed-top fade show">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Welcome '.$_SESSION["username"].'!</strong>
+                <strong>Bienvenid@ '.$_SESSION["username"].'!</strong>
               </div>';
     $exito .= '</div>';
     $_SESSION["nuevoLogin"] = false;
