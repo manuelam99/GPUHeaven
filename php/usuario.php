@@ -7,8 +7,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: ./login.php");
     exit;
 }
-$exito = "";
 
+$exito = "";
 if (isset($_SESSION["compra"]) && $_SESSION["compra"] === true) {
     $exito = '<div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
