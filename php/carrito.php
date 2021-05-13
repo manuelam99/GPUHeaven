@@ -62,6 +62,7 @@ while ($row = mysqli_fetch_array($result)) {
     $contenidoCarrito .= '</div>';
     $contenidoCarrito .= '<div class="col-lg-4">';
     $contenidoCarrito .= '<form action="./eliminarDeCarrito.php" method="post">';
+    $contenidoCarrito .= '<input type="hidden" name="cant" value="'.$row['cantidad'].'">';
     $contenidoCarrito .= '<button type="submit" name="elim" value="' . $row['id_prod'] . '" class="btn btn-danger">Eliminar</button>';
     $contenidoCarrito .= '</form>';
     $contenidoCarrito .= '</div>';

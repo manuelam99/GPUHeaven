@@ -12,10 +12,17 @@ $id_usr = $_SESSION["id"];
 require_once "./coneccion.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $sqlDelete = "DELETE FROM carrito 
-                  WHERE id_producto = {$_POST['elim']}
-                  AND id_usuario = {$id_usr}";
+
+    if($_POST['cant'] > 1){
+        $sqlDelete = "UPDATE carrito
+                      SET cantidad_producto = cantidad_producto - 1
+                      WHERE id_usuario = {$id_usr}
+                      AND id_producto = {$_POST['elim']};";
+    }else{
+        $sqlDelete = "DELETE FROM carrito 
+                      WHERE id_producto = {$_POST['elim']}
+                      AND id_usuario = {$id_usr};";
+    }
                 
 
     if (!mysqli_query($con, $sqlDelete)) {      //Eliminar de carrito
